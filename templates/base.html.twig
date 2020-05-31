@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {{ encore_entry_link_tags('app') }}
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <!-- partial:partials/_navbar.html -->
+            <div class="horizontal-menu">
+                {% include 'partials/topbar.html.twig' %}
+                {% include 'partials/navigation.html.twig' %}
+            </div>
+            <!-- partial -->
+
+            <div class="page-wrapper">
+                <div class="page-content">
+                    {% block content %}{% endblock %}
+                </div>
+
+                {% include 'partials/footer.html.twig' %}
+            </div>
+        </div>
+    </body>
+
+    {% block beforeJavascripts %}{% endblock %}
+    {{ encore_entry_script_tags('app') }}
+    {% block afterJavascripts %}{% endblock %}
+</html>

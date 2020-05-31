@@ -1,0 +1,22 @@
+{% macro percentageChange(currentData, oldDate, term, total) %}
+    <h3 class="mb-2">{{ currentData }}</h3>
+    {% set percentage = percentageChange(currentData, oldDate)  %}
+    {% if percentage == 0 or percentage == -100 or percentage == 100 %}
+        <p class="text-info">
+            <span>steady</span>
+            -
+        </p>
+    {% elseif percentage > 0 %}
+        <p class="text-danger">
+            <span>+{{ percentage }}%</span>
+            <i data-feather="trending-up" class="icon-sm mb-1"></i>
+        </p>
+    {% else %}
+        <p class="text-success">
+            <span>{{ percentage }}%</span>
+            <i data-feather="trending-down" class="icon-sm mb-1"></i>
+        </p>
+    {% endif %}
+    <p class="d-block">{{ oldDate }} yesterday</p>
+    <p>{{ total }} total</p>
+{% endmacro %}

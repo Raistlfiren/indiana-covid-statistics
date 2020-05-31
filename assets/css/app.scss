@@ -1,0 +1,76 @@
+
+// Booststrap functions and variables
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+// Template variables
+@import 'vendor/light/variables';
+@import 'vendor/variables';
+
+// SCSS compass funtions
+@import '~compass-mixins/lib/compass';
+@import '~compass-mixins/lib/animate';
+
+// Bootstrap main SCSS
+@import '~bootstrap/scss/bootstrap';
+
+// Choices JS
+@import '~choices.js/public/assets/styles/choices';
+
+// Template mixins
+@import 'vendor/common/mixins/animation';
+@import 'vendor/common/mixins/badges';
+@import 'vendor/common/mixins/blockquote';
+@import 'vendor/common/mixins/breadcrumbs';
+@import 'vendor/common/mixins/buttons';
+@import 'vendor/common/mixins/cards';
+@import 'vendor/common/mixins/misc';
+@import 'vendor/common/mixins/no_ui_slider';
+@import 'vendor/common/mixins/pagination';
+@import 'vendor/common/mixins/popovers';
+@import 'vendor/common/mixins/tooltips';
+@import 'vendor/common/mixins/width';
+
+// Core stules
+@import 'vendor/common/background';
+@import 'vendor/common/reset';
+@import 'vendor/common/functions';
+@import 'vendor/common/fonts';
+// @import url('https://fonts.googleapis.com/css?family=Overpass:300,400,600,700,800');
+@import 'vendor/common/footer';
+@import 'vendor/common/misc';
+@import 'vendor/common/utilities';
+@import 'vendor/common/demo';
+@import 'vendor/common/typography';
+
+@import 'vendor/horizontal-wrapper';
+@import 'vendor/navbar';
+
+// components
+@import "vendor/common/components/accordions";
+@import "vendor/common/components/badges";
+@import "vendor/common/components/bootstrap-alert";
+@import "vendor/common/components/breadcrumbs";
+@import "vendor/common/components/buttons";
+@import "vendor/common/components/cards";
+@import "vendor/common/components/checkbox-radio";
+@import "vendor/common/components/dashboard";
+@import "vendor/common/components/dropdown";
+@import "vendor/common/components/forms";
+@import "vendor/common/components/icons";
+@import "vendor/common/components/input-group";
+@import "vendor/common/components/list-group";
+@import "vendor/common/components/modal";
+@import "vendor/common/components/pagination";
+@import "vendor/common/components/popover";
+@import "vendor/common/components/profile";
+@import "vendor/common/components/tables";
+@import "vendor/common/components/timeline";
+@import "vendor/common/components/chat";
+@import "vendor/common/components/faq";
+@import "vendor/common/components/auth";
+
+// Plugin overrides
+@import "vendor/light/components/plugin-overrides/apex-charts";
+
+@import "custom";

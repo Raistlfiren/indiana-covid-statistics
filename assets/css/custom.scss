@@ -1,0 +1,12 @@
+.choices__inner {
+  border-color: $blue;
+}
+
+.is-focused .choices__inner,
+.is-open .choices__inner {
+  border-color: $blue;
+}
+
+.is-open .choices__list--dropdown {
+  border-color: $blue;
+}

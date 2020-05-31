@@ -1,0 +1,390 @@
+{% extends 'base.html.twig' %}
+
+{% import 'default/macro/percentageChange.html.twig' as overviewChart %}
+
+{% block title %}{{ county.name }} County Dashboard{% endblock %}
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+        <div>
+            <h4 class="mb-3 mb-md-0">YOU are viewing <span class="text-uppercase text-primary">{{ county.name }}</span> County</h4>
+        </div>
+        <div class="d-flex align-items-center flex-wrap text-nowrap">
+            <span class="text-gray">Set your preferred county here: &nbsp;</span>
+            <select id="countySelector" class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex">
+                <option>Select a County</option>
+                {% for countyName in counties %}
+                    <option>{{ countyName.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="alert alert-icon-primary d-flex" role="alert">
+        <i class="d-none d-sm-block" data-feather="alert-circle"></i>
+        <p>This data is obtained from <a href="https://coronavirus.in.gov"><strong>https://coronavirus.in.gov</strong></a>,
+        and was updated on <strong>{{ 'now'|date('F d, Y') }}</strong>. If
+            you see an issue, then please report a problem to <strong>webmaster [at] incovidstats [dot] net</strong>.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-xl-12 stretch-card">
+            <div class="row flex-grow">
+                <div id="quickCases" class="col-sm-12 col-md-12 col-lg-4 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-baseline">
+                                <h6 class="card-title mb-0">New Cases</h6>
+                                <div class="dropdown mb-2">
+                                    <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 col-md-12 col-xl-5">
+                                    {{ overviewChart.percentageChange(currentStatistics.newCaseDay, previousDay.covidCount, 'cases', county.covidCount) }}
+                                </div>
+                                <div class="col-6 col-md-12 col-xl-7">
+                                    <h6 class="text-center">Past 7 Days</h6>
+                                    <div id="caseChart" class="mt-md-3 mt-xl-0"></div>
+                                    <p class="text-left">
+                                        Past
+                                        <span class="float-right">Now</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="quickTests" class="col-sm-12 col-md-12 col-lg-4  grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-baseline">
+                                <h6 class="card-title mb-0">New Tests</h6>
+                                <div class="dropdown mb-2">
+                                    <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 col-md-12 col-xl-5">
+                                    {{ overviewChart.percentageChange(currentStatistics.newTestDay, previousDay.covidTest, 'tests', county.covidTest) }}
+                                </div>
+                                <div class="col-6 col-md-12 col-xl-7">
+                                    <h6 class="text-center">Past 7 Days</h6>
+                                    <div id="testChart" class="mt-md-3 mt-xl-0"></div>
+                                    <p class="text-left">
+                                        Past
+                                        <span class="float-right">Now</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="quickDeaths" class="col-sm-12 col-md-12 col-lg-4 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-baseline">
+                                <h6 class="card-title mb-0">New Deaths</h6>
+                                <div class="dropdown mb-2">
+                                    <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 col-md-12 col-xl-5">
+                                    {{ overviewChart.percentageChange(currentStatistics.newDeathDay, previousDay.covidDeaths, 'deaths', county.covidDeaths) }}
+                                </div>
+                                <div class="col-6 col-md-12 col-xl-7">
+                                    <h6 class="text-center">Past 7 Days</h6>
+                                    <div id="deathChart" class="mt-md-3 mt-xl-0"></div>
+                                    <p class="text-left">
+                                        Past
+                                        <span class="float-right">Now</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+
+    {% if dailyBedsArray is not empty %}
+        <div class="row">
+            <div class="col-12 col-xl-12 stretch-card">
+                <div class="row flex-grow">
+                    <div id="icuBeds" class="col-sm-12 col-md-12 col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <h6 class="card-title mb-0">ICU Beds</h6>
+                                    <div class="dropdown mb-2">
+                                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                                        </button>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <div class="card-inner-card mt-4 text-center">
+                                            <p> <span class="h4 font-weight-bold" style="color: #f77eb9">{{ dailyBedsArray.data.0 }}</span><br><span class="black"> Covid Use</span></p>
+                                        </div>
+                                        <div class="card-inner-card mt-3 text-center">
+                                            <p> <span class="h4 font-weight-bold" style="color: #7ee5e5">{{ dailyBedsArray.data.1 }}</span><br><span class="black"> Non-Covid Use</span></p>
+                                        </div>
+                                        <div class="card-inner-card mt-3 text-center">
+                                            <p> <span class="h4 font-weight-bold" style="color: #4d8af0">{{ dailyBedsArray.data.2 }}</span><br><span class="black"> Available</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-10">
+                                        <div id="bedsChart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ventilators" class="col-sm-12 col-md-12 col-lg-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-baseline">
+                                    <h6 class="card-title mb-0">Ventilators</h6>
+                                    <div class="dropdown mb-2">
+                                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <div class="card-inner-card mt-4 text-center">
+                                            <p> <span class="h4 font-weight-bold" style="color: #f77eb9">{{ dailyVentsArray.data.0 }}</span><br><span class="black"> Covid Use</span></p>
+                                        </div>
+                                        <div class="card-inner-card mt-3 text-center">
+                                            <p> <span class="h4 font-weight-bold" style="color: #7ee5e5">{{ dailyVentsArray.data.1 }}</span><br><span class="black"> Non-Covid Use</span></p>
+                                        </div>
+                                        <div class="card-inner-card mt-3 text-center">
+                                            <p> <span class="h4 font-weight-bold" style="color: #4d8af0">{{ dailyVentsArray.data.2 }}</span><br><span class="black"> Available</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-10">
+                                        <div id="ventsChart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- row -->
+    {% endif %}
+
+    <div class="row">
+        <div id="bigCases" class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                        <h6 class="card-title mb-0">Cases</h6>
+                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                        </button>
+                    </div>
+                    <div class="row align-items-start mb-2">
+                        <div class="col-md-12">
+                            <p class="text-muted tx-13 mb-3 mb-md-0">
+                                Cases are the total positive cases recorded on a day to day basis from COVID-19.
+                                The 7-day moving average is the average of the past 7-days of new cases recorded
+                                with COVID-19.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div id="bigCasesChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+
+    <div class="row">
+        <div id="bigTests" class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                        <h6 class="card-title mb-0">Tests</h6>
+                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                        </button>
+                    </div>
+                    <div class="row align-items-start mb-2">
+                        <div class="col-md-12">
+                            <p class="text-muted tx-13 mb-3 mb-md-0">
+                                Tests are the total test (NOT always positive) recorded on a day to day basis for COVID-19.
+                                The 7-day moving average is the average of the past 7-days of tests recorded
+                                with COVID-19.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div id="bigTestsChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+
+    <div class="row">
+        <div id="bigDeaths" class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                        <h6 class="card-title mb-0">Deaths</h6>
+                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                        </button>
+                    </div>
+                    <div class="row align-items-start mb-2">
+                        <div class="col-md-12">
+                            <p class="text-muted tx-13 mb-3 mb-md-0">
+                                Deaths are the total positive cases recorded on a day to day basis from COVID-19.
+                                The 7-day moving average is the average of the past 7-days of deaths recorded
+                                with COVID-19.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div id="bigDeathsChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+
+    <div class="row">
+        <div id="fullSexChart" class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                        <h6 class="card-title mb-0">Sex</h6>
+                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                        </button>
+                    </div>
+                    <div class="row align-items-start mb-2">
+                        <div class="col-md-12">
+                            <p class="text-muted tx-13 mb-3 mb-md-0">
+                                Tests are the total tests per sex. Cases are the total confirmed COVID-19 cases.
+                                Deaths are all COVID-19 related deaths.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div id="sexChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+
+    <div class="row">
+        <div id="fullAgeChart" class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                        <h6 class="card-title mb-0">Age</h6>
+                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                        </button>
+                    </div>
+                    <div class="row align-items-start mb-2">
+                        <div class="col-md-12">
+                            <p class="text-muted tx-13 mb-3 mb-md-0">
+                                Tests are the total tests per age. Cases are the total confirmed COVID-19 cases.
+                                Deaths are all COVID-19 related deaths.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div id="ageChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+
+    <div class="row">
+        <div id="fullRaceChart" class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                        <h6 class="card-title mb-0">Race</h6>
+                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                        </button>
+                    </div>
+                    <div class="row align-items-start mb-2">
+                        <div class="col-md-12">
+                            <p class="text-muted tx-13 mb-3 mb-md-0">
+                                Tests are the total tests per race. Cases are the total confirmed COVID-19 cases.
+                                Deaths are all COVID-19 related deaths.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div id="raceChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+
+    <div class="row">
+        <div id="fullEthnicityChart" class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                        <h6 class="card-title mb-0">Ethnicity</h6>
+                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                        </button>
+                    </div>
+                    <div class="row align-items-start mb-2">
+                        <div class="col-md-12">
+                            <p class="text-muted tx-13 mb-3 mb-md-0">
+                                Tests are the total tests per ethnicity. Cases are the total confirmed COVID-19 cases.
+                                Deaths are all COVID-19 related deaths.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div id="ethnicityChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+{% endblock %}
+
+
+{% block beforeJavascripts %}
+    <script>
+        window.cases = JSON.parse('{{ cases|raw }}');
+        window.deaths = JSON.parse('{{ deaths|raw }}');
+        window.tests = JSON.parse('{{ tests|raw }}');
+        window.dailyCases = JSON.parse('{{ dailyCases|raw }}');
+        window.dailyDeaths = JSON.parse('{{ dailyDeaths|raw }}');
+        window.dailyTests = JSON.parse('{{ dailyTests|raw }}');
+        window.sexDetails = JSON.parse('{{ sexDetails|raw }}');
+        window.ageDetails = JSON.parse('{{ ageDetails|raw }}');
+        window.ethnicityDetails = JSON.parse('{{ ethnicityDetails|raw }}');
+        window.raceDetails = JSON.parse('{{ raceDetails|raw }}');
+        window.dailyBeds = JSON.parse('{{ dailyBeds|raw }}');
+        window.dailyVents = JSON.parse('{{ dailyVents|raw }}');
+        window.homeRoute = '{{ url('homepage') }}';
+    </script>
+{% endblock %}
