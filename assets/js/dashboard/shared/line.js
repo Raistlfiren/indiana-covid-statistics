@@ -21,6 +21,60 @@ export const lineChartOptions = {
             }
         }
     },
+    annotations: {
+        xaxis: [
+            {
+                x: new Date('23 Mar 2020').getTime(),
+                borderColor: '#282f3a',
+                label: {
+                    style: {
+                        color: '#282f3a',
+                    },
+                    text: 'Stage 1'
+                }
+            },
+            {
+                x: new Date('04 May 2020').getTime(),
+                borderColor: '#282f3a',
+                label: {
+                    style: {
+                        color: '#282f3a',
+                    },
+                    text: 'Stage 2'
+                }
+            },
+            {
+                x: new Date('24 May 2020').getTime(),
+                borderColor: '#282f3a',
+                label: {
+                    style: {
+                        color: '#282f3a',
+                    },
+                    text: 'Stage 3'
+                }
+            },
+            {
+                x: new Date('14 Jun 2020').getTime(),
+                borderColor: '#282f3a',
+                label: {
+                    style: {
+                        color: '#282f3a',
+                    },
+                    text: 'Stage 4'
+                }
+            },
+            {
+                x: new Date('04 July 2020').getTime(),
+                borderColor: '#282f3a',
+                label: {
+                    style: {
+                        color: '#282f3a',
+                    },
+                    text: 'Stage 5'
+                }
+            }
+        ]
+    },
     legend: {
         show: true,
         position: "top",
