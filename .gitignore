@@ -23,3 +23,7 @@ yarn-error.log
 ###> Remove PHPStorm files ###
 /.idea/
 ##> Remove PHPStorm files ###
+
+###> Remove Deployment Logs ###
+/log/
+##> Remove Deployment Logs ###
