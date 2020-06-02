@@ -51,6 +51,12 @@ class DefaultController extends AbstractController
     )
     {
         $county = $countyRepository->findOneBy(['name' => $selectedCounty]);
+
+        if ($county === null) {
+            //Someone must have been manipulating the DOM
+            return $this->redirectToRoute('homepage');
+        }
+
         $counties = $countyRepository->findBy([], ['name' => 'ASC']);
         $currentStatistics = $statisticsRepository->findOneBy(['county' => $county]);
         $hospitalStatistics = $hospitalRepository->findOneBy(['county' => $county]);
