@@ -25,5 +25,6 @@ yarn-error.log
 ##> Remove PHPStorm files ###
 
 ###> Remove Deployment Logs ###
+/config/deploy/prod.rb
 /log/
 ##> Remove Deployment Logs ###
