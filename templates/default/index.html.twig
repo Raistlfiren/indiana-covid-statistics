@@ -4,6 +4,10 @@
 
 {% block title %}{{ county.name }} County Dashboard{% endblock %}
 
+{% block bottomBar %}
+    {% include 'default/partial/sub-navigation.html.twig' %}
+{% endblock %}
+
 {% block content %}
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
