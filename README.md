@@ -9,7 +9,9 @@ To Keep track of daily data from the Indiana coronavirus website, and create
 more detailed reports with the data. This is also to fuel my own desire to
 keep people more informed in this crazy Pandemic.
 
-![Dashboard](Resources/dashboard-ss.png#thumbnail)
+<p align="center">
+  <img height="300" title="Dashboard" src="/Resources/dashboard-ss.png">
+</p>
 
 ###
 ## Prerequisites
