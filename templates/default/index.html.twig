@@ -3,6 +3,7 @@
 {% import 'default/macro/percentageChange.html.twig' as overviewChart %}
 
 {% block title %}{{ county.name }} County Dashboard{% endblock %}
+
 {% block content %}
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
@@ -387,4 +388,8 @@
         window.dailyVents = JSON.parse('{{ dailyVents|raw }}');
         window.homeRoute = '{{ url('homepage') }}';
     </script>
+{% endblock %}
+
+{% block afterJavascripts %}
+    {{ encore_entry_script_tags('dashboard') }}
 {% endblock %}
