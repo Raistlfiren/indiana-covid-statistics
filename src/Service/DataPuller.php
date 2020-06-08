@@ -18,6 +18,14 @@ class DataPuller
 {
     const URL = 'https://www.coronavirus.in.gov/map/covid-19-indiana-daily-report-current.topojson';
 
+    const COUNTY_STATISTICS_URL = 'https://hub.mph.in.gov/datastore/dump/8b8e6cd7-ede2-4c41-a9bd-4266df783145?bom=True';
+    const CASE_DATA_URL = 'https://hub.mph.in.gov/datastore/dump/46b310b9-2f29-4a51-90dc-3886d9cf4ac1?bom=True';
+    const CASE_DEMOGRAPHICS_URL = 'https://hub.mph.in.gov/datastore/dump/2538d7f1-391b-4733-90b3-9e95cd5f3ea6?bom=True';
+    const BED_VENTS_URL = 'https://hub.mph.in.gov/datastore/dump/882a7426-886f-48cc-bbe0-a8d14e3012e4?bom=True';
+    const STATE_WIDE_URL = 'https://hub.mph.in.gov/datastore/dump/182b6742-edac-442d-8eeb-62f96b17773e?bom=True';
+    const REGION_WIDE_URL = 'https://hub.mph.in.gov/datastore/dump/3466ada6-a174-416d-a1c4-aaa0bf3d68af?bom=True';
+    const COUNTY_WIDE_URL = 'https://hub.mph.in.gov/datastore/dump/afaa225d-ac4e-4e80-9190-f6800c366b58?bom=True';
+
     /**
      * @var SerializerInterface
      */
@@ -54,6 +62,41 @@ class DataPuller
         $filePath = __DIR__ . '/../../Resources/coronavirus.in.gov/' . $this->generateFileName();
 
         file_put_contents($filePath, $data);
+
+        $this->backupDataHub();
+    }
+
+    public function backupDataHub()
+    {
+        $date = new \DateTime();
+
+        $countyStatistics = file_get_contents(self::COUNTY_STATISTICS_URL);
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CountyStatistics/' . $date->format('m-d-y') . 'csv';
+        file_put_contents($filePath, $countyStatistics);
+
+        $caseData = file_get_contents(self::CASE_DATA_URL);
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CaseData/' . $date->format('m-d-y') . 'csv';
+        file_put_contents($filePath, $caseData);
+
+        $caseDemographics = file_get_contents(self::CASE_DEMOGRAPHICS_URL);
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CaseDemographics/' . $date->format('m-d-y') . 'csv';
+        file_put_contents($filePath, $caseDemographics);
+
+        $bedsAndVents = file_get_contents(self::BED_VENTS_URL);
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/BedAndVents/' . $date->format('m-d-y') . 'csv';
+        file_put_contents($filePath, $bedsAndVents);
+
+        $stateWide = file_get_contents(self::STATE_WIDE_URL);
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/StatewideTestCaseAndDeathTrends/' . $date->format('m-d-y') . 'csv';
+        file_put_contents($filePath, $stateWide);
+
+        $regionWide = file_get_contents(self::REGION_WIDE_URL);
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/RegionWideTestCaseAndDeathTrends/' . $date->format('m-d-y') . 'csv';
+        file_put_contents($filePath, $regionWide);
+
+        $countyWide = file_get_contents(self::COUNTY_WIDE_URL);
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CountyWideTestCaseAndDeathTrends/' . $date->format('m-d-y') . 'csv';
+        file_put_contents($filePath, $countyWide);
     }
 
     protected function generateFileName()
