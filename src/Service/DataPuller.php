@@ -71,31 +71,31 @@ class DataPuller
         $date = new \DateTime();
 
         $countyStatistics = file_get_contents(self::COUNTY_STATISTICS_URL);
-        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CountyStatistics/' . $date->format('m-d-y') . 'csv';
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CountyStatistics/' . $date->format('m-d-y') . '.csv';
         file_put_contents($filePath, $countyStatistics);
 
         $caseData = file_get_contents(self::CASE_DATA_URL);
-        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CaseData/' . $date->format('m-d-y') . 'csv';
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CaseData/' . $date->format('m-d-y') . '.csv';
         file_put_contents($filePath, $caseData);
 
         $caseDemographics = file_get_contents(self::CASE_DEMOGRAPHICS_URL);
-        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CaseDemographics/' . $date->format('m-d-y') . 'csv';
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CaseDemographics/' . $date->format('m-d-y') . '.csv';
         file_put_contents($filePath, $caseDemographics);
 
         $bedsAndVents = file_get_contents(self::BED_VENTS_URL);
-        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/BedAndVents/' . $date->format('m-d-y') . 'csv';
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/BedAndVents/' . $date->format('m-d-y') . '.csv';
         file_put_contents($filePath, $bedsAndVents);
 
         $stateWide = file_get_contents(self::STATE_WIDE_URL);
-        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/StatewideTestCaseAndDeathTrends/' . $date->format('m-d-y') . 'csv';
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/StatewideTestCaseAndDeathTrends/' . $date->format('m-d-y') . '.csv';
         file_put_contents($filePath, $stateWide);
 
         $regionWide = file_get_contents(self::REGION_WIDE_URL);
-        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/RegionWideTestCaseAndDeathTrends/' . $date->format('m-d-y') . 'csv';
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/RegionWideTestCaseAndDeathTrends/' . $date->format('m-d-y') . '.csv';
         file_put_contents($filePath, $regionWide);
 
         $countyWide = file_get_contents(self::COUNTY_WIDE_URL);
-        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CountyWideTestCaseAndDeathTrends/' . $date->format('m-d-y') . 'csv';
+        $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/CountyWideTestCaseAndDeathTrends/' . $date->format('m-d-y') . '.csv';
         file_put_contents($filePath, $countyWide);
     }
 
