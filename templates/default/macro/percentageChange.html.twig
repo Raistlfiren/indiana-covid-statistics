@@ -1,7 +1,13 @@
-{% macro percentageChange(currentData, oldDate, term, total) %}
+{% macro currentActivityData(currentData, oldDate, term, total) %}
     <h3 class="mb-2">{{ currentData }}</h3>
+    {{ _self.percentageChange(currentData, oldDate) }}
+    <p class="d-block">{{ oldDate }} yesterday</p>
+    <p>{{ total }} total</p>
+{% endmacro %}
+
+{% macro percentageChange(currentData, oldDate) %}
     {% set percentage = percentageChange(currentData, oldDate)  %}
-    {% if percentage == 0 or percentage == -100 or percentage == 100 %}
+    {% if percentage == 0 %}
         <p class="text-info">
             <span>steady</span>
             -
@@ -17,6 +23,15 @@
             <i data-feather="trending-down" class="icon-sm mb-1"></i>
         </p>
     {% endif %}
-    <p class="d-block">{{ oldDate }} yesterday</p>
-    <p>{{ total }} total</p>
+{% endmacro %}
+
+{% macro textpercentageChange(currentData, oldDate) %}
+    {% set percentage = percentageChange(currentData, oldDate)  %}
+    {% if percentage == 0 %}
+        <span class="font-weight-bold text-info">staying the same</span>
+    {% elseif percentage > 0 %}
+        <span class="font-weight-bold text-danger">increasing</span>
+    {% else %}
+        <span class="font-weight-bold text-success">decreasing</span>
+    {% endif %}
 {% endmacro %}

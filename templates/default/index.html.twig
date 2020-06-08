@@ -32,6 +32,22 @@
             <strong>webmaster [at] incovidstats [dot] net</strong>.</p>
     </div>
 
+    <div class="alert alert-icon-dark d-flex" role="alert">
+        <i class="d-none d-sm-block" data-feather="alert-circle"></i>
+        <p>
+            {% set casesDayAverage = percentageChange(caseMovingAverage.0.dayAvg, caseMovingAverage.0.prevDayAvg) %}
+            {% set deathsDayAverage = percentageChange(deathMovingAverage.0.dayAvg, deathMovingAverage.0.prevDayAvg) %}
+            Over the past 14 days {{ county.name }} county has had an average of {{ caseMovingAverage.0.dayAvg }} cases
+            and {{ deathMovingAverage.0.dayAvg }} deaths per day. Based upon yesterday's data, {{ county.name }} counties
+            cases are {{ overviewChart.textpercentageChange(caseMovingAverage.0.dayAvg, caseMovingAverage.0.prevDayAvg) }} and
+            deaths are {{ overviewChart.textpercentageChange(deathMovingAverage.0.dayAvg, deathMovingAverage.0.prevDayAvg) }}.
+
+            {% set herdImm = ((county.covidCount/county.population)*100)|round(2) %}
+            The estimated population of {{ county.name }} county is {{ county.population|number_format(0, '.', ',') }}. Our current "herd immunity"
+            outlook is <strong>{{ herdImm }}%</strong>.
+        </p>
+    </div>
+
     <div class="row">
         <div class="col-12 col-xl-12 stretch-card">
             <div class="row flex-grow">
@@ -48,7 +64,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6 col-md-12 col-xl-5">
-                                    {{ overviewChart.percentageChange(currentStatistics.newCaseDay, previousDay.covidCount, 'cases', county.covidCount) }}
+                                    {{ overviewChart.currentActivityData(currentStatistics.newCaseDay, previousDay.covidCount, 'cases', county.covidCount) }}
                                 </div>
                                 <div class="col-6 col-md-12 col-xl-7">
                                     <h6 class="text-center">Past 7 Days</h6>
@@ -75,7 +91,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6 col-md-12 col-xl-5">
-                                    {{ overviewChart.percentageChange(currentStatistics.newTestDay, previousDay.covidTest, 'tests', county.covidTest) }}
+                                    {{ overviewChart.currentActivityData(currentStatistics.newTestDay, previousDay.covidTest, 'tests', county.covidTest) }}
                                 </div>
                                 <div class="col-6 col-md-12 col-xl-7">
                                     <h6 class="text-center">Past 7 Days</h6>
@@ -102,7 +118,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6 col-md-12 col-xl-5">
-                                    {{ overviewChart.percentageChange(currentStatistics.newDeathDay, previousDay.covidDeaths, 'deaths', county.covidDeaths) }}
+                                    {{ overviewChart.currentActivityData(currentStatistics.newDeathDay, previousDay.covidDeaths, 'deaths', county.covidDeaths) }}
                                 </div>
                                 <div class="col-6 col-md-12 col-xl-7">
                                     <h6 class="text-center">Past 7 Days</h6>

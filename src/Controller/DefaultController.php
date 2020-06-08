@@ -57,6 +57,8 @@ class DefaultController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
+        $caseMovingAverage = $dayRepository->getCaseMovingAverage(7, $county->getName());
+        $deathMovingAverage = $dayRepository->getDeathMovingAverage(7, $county->getName());
         $counties = $countyRepository->findBy([], ['name' => 'ASC']);
         $currentStatistics = $statisticsRepository->findOneBy(['county' => $county]);
         $hospitalStatistics = $hospitalRepository->findOneBy(['county' => $county]);
@@ -212,7 +214,9 @@ class DefaultController extends AbstractController
             'dailyBeds' => json_encode($dailyBeds),
             'dailyVents' => json_encode($dailyVents),
             'dailyBedsArray' => $dailyBeds,
-            'dailyVentsArray' => $dailyVents
+            'dailyVentsArray' => $dailyVents,
+            'caseMovingAverage' => $caseMovingAverage,
+            'deathMovingAverage' => $deathMovingAverage
         ]);
     }
 }
