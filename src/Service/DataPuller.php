@@ -86,7 +86,7 @@ class DataPuller
                 $countyEntity->setName($countyProperties->NAME);
             }
 
-            $countyEntity->setCreatedAt(new \DateTime());
+            $countyEntity->setCreatedAt(new \DateTime('now', new \DateTimeZone('CST6CDT')));
             $countyEntity->setPopulation($countyProperties->POPULATION);
             $countyEntity->setCovidCount($countyProperties->COVID_COUNT);
             $countyEntity->setCovidCountProb($countyProperties->COVID_COUNT_PROB);
