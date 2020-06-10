@@ -27,7 +27,7 @@
     <div class="alert alert-icon-primary d-flex" role="alert">
         <i class="d-none d-sm-block" data-feather="alert-circle"></i>
         <p>This data is obtained from <a href="https://coronavirus.in.gov"><strong>https://coronavirus.in.gov</strong></a>,
-        and was updated on <strong>{{ 'now'|date('F j, Y') }}</strong>. <strong>All data is provisional and reflects only what is reported to
+        and was updated on <strong>{{ county.createdAt|date('F j, Y') }}</strong>. <strong>All data is provisional and reflects only what is reported to
                 the Indiana State Health Department.</strong> If you see an issue, then please report a problem to
             <strong>webmaster [at] incovidstats [dot] net</strong>.</p>
     </div>
@@ -57,7 +57,7 @@
                             <div class="d-flex justify-content-between align-items-baseline">
                                 <h6 class="card-title mb-0">New Cases</h6>
                                 <div class="dropdown mb-2">
-                                    <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn p-0" type="button" data-toggle="popover" data-content="Case data refers to a test that returns positive. <br /> <br /> <a class='btn btn-primary' role='button' href=#'>Read more</a>.">
                                         <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
                                     </button>
                                 </div>
