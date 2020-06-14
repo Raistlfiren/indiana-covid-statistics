@@ -6,7 +6,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Symfony\Component\Serializer\Annotation\SerializedName;
 
 /**
  * Class County
@@ -27,49 +26,41 @@ class County
 
     /**
      * @ORM\Column(type="string")
-     * @SerializedName("NAME")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
-     * @SerializedName("ISDH_DISTRICT_ID")
      */
     private $district;
 
     /**
      * @ORM\Column(type="integer")
-     * @SerializedName("COVID_COUNT")
      */
     private $covidCount;
 
     /**
      * @ORM\Column(type="integer")
-     * @SerializedName("COVID_COUNT_PROB")
      */
     private $covidCountProb;
 
     /**
      * @ORM\Column(type="integer")
-     * @SerializedName("COVID_DEATHS")
      */
     private $covidDeaths;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @SerializedName("COVID_DEATHS_PROB")
      */
     private $covidDeathsProb;
 
     /**
      * @ORM\Column(type="integer")
-     * @SerializedName("COVID_TEST")
      */
     private $covidTest;
 
     /**
      * @ORM\Column(type="integer")
-     * @SerializedName("POPULATION")
      */
     private $population;
 

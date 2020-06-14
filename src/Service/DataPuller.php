@@ -19,11 +19,6 @@ class DataPuller
     const URL = 'https://www.coronavirus.in.gov/map/covid-19-indiana-daily-report-current.topojson';
 
     /**
-     * @var SerializerInterface
-     */
-    protected $serializer;
-
-    /**
      * @var EntityManagerInterface
      */
     private $entityManager;
@@ -34,12 +29,10 @@ class DataPuller
     private $countyRepository;
 
     public function __construct(
-        SerializerInterface $serializer,
         EntityManagerInterface $entityManager,
         CountyRepository $countyRepository
     )
     {
-        $this->serializer = $serializer;
         $this->entityManager = $entityManager;
         $this->countyRepository = $countyRepository;
     }
