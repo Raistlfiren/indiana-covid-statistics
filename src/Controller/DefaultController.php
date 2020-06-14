@@ -50,6 +50,7 @@ class DefaultController extends AbstractController
         string $selectedCounty = 'Marion'
     )
     {
+
         $county = $countyRepository->findOneBy(['name' => $selectedCounty]);
 
         if ($county === null) {
@@ -68,6 +69,10 @@ class DefaultController extends AbstractController
         $raceStatistics = $raceRepository->findBy(['county' => $county]);
         $dailyStatistics = $dayRepository->findBy(['county' => $county], ['date' => 'DESC']);
         //$previousDay = $dayRepository->findOneBy(['county' => $county, 'date' => $date->modify('-1 day')]);
+        $weeklyCaseSum = $dayRepository->getWeeklyCaseSum($county->getName());
+        $allWeeklyCaseSum = $dayRepository->getWeeklyCaseSum();
+        $weeklyDeathSum = $dayRepository->getWeeklyDeathSum($county->getName());
+        $allWeeklyDeathSum = $dayRepository->getWeeklyDeathSum();
         $previousDay = $dailyStatistics[1];
 
         $cases = [];
@@ -195,6 +200,20 @@ class DefaultController extends AbstractController
             $dailyVents['labels'] = ['Covid Use', 'Non-Covid Use', 'Available'];
         }
 
+        foreach ($allWeeklyCaseSum as $index => $allWeeklyCase) {
+            $weeklyCaseTotal['all'][] = $allWeeklyCase['total'];
+            $weeklyCaseTotal['week'][] = $allWeeklyCase['week'];
+            $weeklyCaseTotal['county'][] = $weeklyCaseSum[$index]['total'];
+            $weeklyCaseTotal['week_number'][] = $allWeeklyCase['week_number'];
+        }
+
+        foreach ($allWeeklyDeathSum as $index => $allWeeklyDeath) {
+            $weeklyDeathTotal['all'][] = $allWeeklyDeath['total'];
+            $weeklyDeathTotal['week'][] = $allWeeklyDeath['week'];
+            $weeklyDeathTotal['county'][] = $weeklyDeathSum[$index]['total'];
+            $weeklyDeathTotal['week_number'][] = $allWeeklyDeath['week_number'];
+        }
+
         return $this->render('default/index.html.twig', [
             'county' => $county,
             'dailyStatistics' => $dailyStatistics,
@@ -216,7 +235,9 @@ class DefaultController extends AbstractController
             'dailyBedsArray' => $dailyBeds,
             'dailyVentsArray' => $dailyVents,
             'caseMovingAverage' => $caseMovingAverage,
-            'deathMovingAverage' => $deathMovingAverage
+            'deathMovingAverage' => $deathMovingAverage,
+            'weeklyCaseSum' => json_encode($weeklyCaseTotal),
+            'weeklyDeathSum' => json_encode($weeklyDeathTotal),
         ]);
     }
 }

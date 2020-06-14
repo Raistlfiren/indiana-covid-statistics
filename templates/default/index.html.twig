@@ -390,6 +390,56 @@
             </div>
         </div>
     </div> <!-- row -->
+
+    <div class="row">
+        <div id="weeklyCaseSum" class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                        <h6 class="card-title mb-0">Weekly Case SUM</h6>
+                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                        </button>
+                    </div>
+                    <div class="row align-items-start mb-2">
+                        <div class="col-md-12">
+                            <p class="text-muted tx-13 mb-3 mb-md-0">
+                                This is an overlook of the weekly case SUM in comparison to Indiana as a whole.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div id="weeklyCaseChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+
+    <div class="row">
+        <div id="weeklyDeathSum" class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                        <h6 class="card-title mb-0">Weekly Death SUM</h6>
+                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                        </button>
+                    </div>
+                    <div class="row align-items-start mb-2">
+                        <div class="col-md-12">
+                            <p class="text-muted tx-13 mb-3 mb-md-0">
+                                This is an overlook of the weekly death SUM in comparison to Indiana as a whole.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div id="weeklyDeathChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
 {% endblock %}
 
 
@@ -407,6 +457,8 @@
         window.raceDetails = JSON.parse('{{ raceDetails|raw }}');
         window.dailyBeds = JSON.parse('{{ dailyBeds|raw }}');
         window.dailyVents = JSON.parse('{{ dailyVents|raw }}');
+        window.weeklyCaseSum = JSON.parse('{{ weeklyCaseSum|raw }}');
+        window.weeklyDeathSum = JSON.parse('{{ weeklyDeathSum|raw }}');
         window.homeRoute = '{{ url('homepage') }}';
     </script>
 {% endblock %}

@@ -72,4 +72,54 @@ class DayRepository extends ServiceEntityRepository
 
         return $stmt->fetchAll();
     }
+
+    public function getWeeklyCaseSum($countyName = null)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $countyClause = '';
+
+        if (!empty($countyName)) {
+            $countyClause = 'WHERE c.name = \'' . $countyName . '\'';
+        }
+
+        $sql = '
+            SELECT SUM(day.covid_count) AS total, CONCAT(DATE_FORMAT(date, "%m/%d/%Y"), \' - \', DATE_FORMAT(date + INTERVAL 6 DAY, "%m/%d/%Y")) AS week, WEEK(date) AS week_number
+                FROM day 
+                Inner JOIN county c on day.county_id = c.id
+                ' . $countyClause . '
+                GROUP BY WEEK(date) 
+                ORDER BY WEEK(date)
+        ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    public function getWeeklyDeathSum($countyName = null)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $countyClause = '';
+
+        if (!empty($countyName)) {
+            $countyClause = 'WHERE c.name = \'' . $countyName . '\'';
+        }
+
+        $sql = '
+            SELECT SUM(day.covid_deaths) AS total, CONCAT(DATE_FORMAT(date, "%m/%d/%Y"), \' - \', DATE_FORMAT(date + INTERVAL 6 DAY, "%m/%d/%Y")) AS week, WEEK(date) AS week_number
+                FROM day 
+                Inner JOIN county c on day.county_id = c.id
+                ' . $countyClause . '
+                GROUP BY WEEK(date) 
+                ORDER BY WEEK(date)
+        ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }
