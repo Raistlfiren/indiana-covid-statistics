@@ -17,7 +17,30 @@ class DayRepository extends ServiceEntityRepository
         parent::__construct($registry, Day::class);
     }
 
-    public function getCaseMovingAverage($days, $countyName)
+    public function getCountyMovingAverage($countyName)
+    {
+        $now = new \DateTime();
+        $next14 = (new \DateTime())->modify('-14 days');
+
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT c.name, d1.date, d1.covid_count, ROUND(AVG(d2.covid_count)) AS 14DayAvg
+            FROM day d1
+            JOIN day d2 ON d1.county_id=d2.county_id AND DATEDIFF(d1.date, d2.date) BETWEEN 0 AND 13
+            Inner JOIN county c on d1.county_id = c.id
+            WHERE d1.date BETWEEN \'' . $next14->format('Y-m-d') . '\' AND \'' . $now->format('Y-m-d') . '\'
+            AND c.name = \'' . $countyName . '\'
+            GROUP BY d1.date, d1.county_id
+            ORDER BY c.name, d1.date DESC
+            ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    public function getCaseMovingAverage($days, $countyName = null)
     {
         $days--;
         $conn = $this->getEntityManager()->getConnection();
@@ -45,7 +68,7 @@ class DayRepository extends ServiceEntityRepository
         return $stmt->fetchAll();
     }
 
-    public function getDeathMovingAverage($days, $countyName)
+    public function getDeathMovingAverage($days, $countyName = ull)
     {
         $days--;
         $conn = $this->getEntityManager()->getConnection();

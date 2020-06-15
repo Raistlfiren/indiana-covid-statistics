@@ -17,6 +17,7 @@ use App\Repository\HospitalRepository;
 use App\Repository\RaceRepository;
 use App\Repository\SexRepository;
 use App\Repository\StatisticsRepository;
+use App\Service\INDataHubPuller;
 use MathPHP\Statistics\Average;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,6 +25,37 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
+    /**
+     * @param DayRepository $dayRepository
+     * @Route("/county", name="county")
+     */
+    public function countyOverview(DayRepository $dayRepository, CountyRepository $countyRepository)
+    {
+        $counties = $countyRepository->findAll();
+        $sma = [];
+
+        foreach ($counties as $county) {
+            $movingAverages = $dayRepository->getCountyMovingAverage($county->getName());
+            foreach ($movingAverages as $movingAverage) {
+                $sma[$county->getName()]['date'][] = $movingAverage['date'];
+                $sma[$county->getName()]['average'][] = $movingAverage['14DayAvg'];
+            }
+            $total = count($movingAverages)-1;
+            $latest = (int) $movingAverages[0]['14DayAvg'];
+            $FourteenDaysAgo = (int) $movingAverages[$total]['14DayAvg'];
+            if ($FourteenDaysAgo === 0) {
+                $sma[$county->getName()]['percentage'] = 0;
+            } else {
+                $sma[$county->getName()]['percentage'] = round((($latest - $FourteenDaysAgo)/$FourteenDaysAgo)*100);
+            }
+        }
+
+        return $this->render('default/county.html.twig', [
+            'counties' => $counties,
+            'movingAverage' => $sma
+        ]);
+    }
+
     /**
      * @param CountyRepository $countyRepository
      * @param StatisticsRepository $statisticsRepository

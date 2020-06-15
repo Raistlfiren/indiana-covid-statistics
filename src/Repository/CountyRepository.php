@@ -33,4 +33,22 @@ class CountyRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findWithDays()
+    {
+        $now = new \DateTime();
+        $next14 = (new \DateTime())->modify('-14 days');
+        $qb = $this->createQueryBuilder('c');
+
+        return $qb
+            ->select('c', 'd')
+            ->leftJoin('c.days', 'd')
+            ->where('d.date BETWEEN :start AND :end')
+            ->setParameter('start', $next14->format('Y-m-d'))
+            ->setParameter('end', $now->format('Y-m-d'))
+            ->orderBy('c.name')
+            ->addOrderBy('d.date', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

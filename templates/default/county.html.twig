@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}County Dashboard{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('county') }}
+{% endblock %}
+
+{% block content %}
+    <table id="countyTable" class="table">
+        <thead>
+        <tr>
+            <th>County</th>
+            <th>Cases</th>
+            <th>Deaths</th>
+            <th>14-Day Trend of Cases</th>
+            <th>Last 14 Days (Rolling) Average</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for county in counties %}
+            <tr>
+                <th>{{ county.name }}</th>
+                <td>{{ county.covidCount }}</td>
+                <td>{{ county.covidDeaths }}</td>
+                <td class="percentage">
+                    {{ movingAverage[county.name].percentage }}%
+                </td>
+                <td class="chart" data-dates="{{ movingAverage[county.name].date|json_encode() }}" data-averages="{{ movingAverage[county.name].average|json_encode() }}"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block afterJavascripts %}
+    {{ encore_entry_script_tags('county') }}
+{% endblock %}
