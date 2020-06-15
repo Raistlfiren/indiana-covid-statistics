@@ -44,6 +44,8 @@ class DefaultController extends AbstractController
                 $counties[$name]['name'] = $name;
                 $counties[$name]['cases'] = $movingAverage['covidCount'];
                 $counties[$name]['deaths'] = $movingAverage['covidDeaths'];
+                $counties[$name]['activeCases'] = $movingAverage['activeCases'];
+                $counties[$name]['population'] = $movingAverage['population'];
 //                $counties[$name]['days'][$index]['date'] = $movingAverage['date'];
                 $counties[$name]['dates'][] = $movingAverage['date']->format('Y-m-d');
 //                $counties[$name]['days'][$index]['average'] = $movingAverage['average'];

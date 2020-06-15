@@ -6,7 +6,7 @@ import ApexCharts from "apexcharts";
 $('#countyTable').DataTable({
     "paging": false,
     "rowCallback": function(row, data, index) {
-        let percentage = parseInt(data[3]);
+        let percentage = parseInt(data[5]);
         if (percentage > 0) {
             $('th', row).addClass('table-danger');
             $('.percentage', row).addClass('text-danger');

@@ -30,7 +30,7 @@ class DayRepository extends ServiceEntityRepository
         }
 
         return $qb
-            ->select('c.name', 'c.covidCount', 'c.covidDeaths', 'd.date', 'AVG(d1.covidCount) AS average')
+            ->select('c.name', 'c.covidCount', 'c.covidDeaths', 'c.population', 'd.date', 'AVG(d1.covidCount) AS average', 'SUM(d1.covidCount) AS activeCases')
             ->innerJoin('d.county', 'c')
             ->join(Day::class, 'd1', 'WITH', 'd.county = d1.county AND DATE_DIFF(d.date, d1.date) BETWEEN 0 AND 13')
             ->andWhere('d.date BETWEEN :start AND :end')

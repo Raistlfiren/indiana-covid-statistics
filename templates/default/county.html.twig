@@ -11,8 +11,10 @@
         <thead>
         <tr>
             <th>County</th>
+            <th>Population</th>
             <th>Cases</th>
             <th>Deaths</th>
+            <th>Active Cases Based upon 14 days</th>
             <th>14-Day Trend of Cases</th>
             <th>Last 14 Days (Rolling) Average</th>
         </tr>
@@ -21,8 +23,10 @@
         {% for county in counties %}
             <tr>
                 <th>{{ county.name }}</th>
+                <td>{{ county.population|number_format() }}</td>
                 <td>{{ county.cases }}</td>
                 <td>{{ county.deaths }}</td>
+                <td>{{ county.activeCases }}</td>
                 <td class="percentage">
                     {{ percentageChange(county.averages.0, county.averages.12) }}%
                 </td>
