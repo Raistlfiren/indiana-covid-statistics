@@ -31,28 +31,28 @@ class DefaultController extends AbstractController
      */
     public function countyOverview(DayRepository $dayRepository, CountyRepository $countyRepository)
     {
-        $counties = $countyRepository->findAll();
-        $sma = [];
-
-        foreach ($counties as $county) {
-            $movingAverages = $dayRepository->getCountyMovingAverage($county->getName());
-            foreach ($movingAverages as $movingAverage) {
-                $sma[$county->getName()]['date'][] = $movingAverage['date'];
-                $sma[$county->getName()]['average'][] = $movingAverage['14DayAvg'];
-            }
-            $total = count($movingAverages)-1;
-            $latest = (int) $movingAverages[0]['14DayAvg'];
-            $FourteenDaysAgo = (int) $movingAverages[$total]['14DayAvg'];
-            if ($FourteenDaysAgo === 0) {
-                $sma[$county->getName()]['percentage'] = 0;
+        $counties = [];
+        $movingAverages = $dayRepository->getCountyMovingAverage();
+        foreach ($movingAverages as $index => $movingAverage) {
+            $name = $movingAverage['name'];
+            if (isset($counties[$name])) {
+//                $counties[$name]['days'][$index]['date'] = $movingAverage['date'];
+//                $counties[$name]['days'][$index]['average'] = $movingAverage['average'];
+                $counties[$name]['dates'][] = $movingAverage['date']->format('Y-m-d');
+                $counties[$name]['averages'][] = round($movingAverage['average']);
             } else {
-                $sma[$county->getName()]['percentage'] = round((($latest - $FourteenDaysAgo)/$FourteenDaysAgo)*100);
+                $counties[$name]['name'] = $name;
+                $counties[$name]['cases'] = $movingAverage['covidCount'];
+                $counties[$name]['deaths'] = $movingAverage['covidDeaths'];
+//                $counties[$name]['days'][$index]['date'] = $movingAverage['date'];
+                $counties[$name]['dates'][] = $movingAverage['date']->format('Y-m-d');
+//                $counties[$name]['days'][$index]['average'] = $movingAverage['average'];
+                $counties[$name]['averages'][] = round($movingAverage['average']);
             }
         }
 
         return $this->render('default/county.html.twig', [
             'counties' => $counties,
-            'movingAverage' => $sma
         ]);
     }
 

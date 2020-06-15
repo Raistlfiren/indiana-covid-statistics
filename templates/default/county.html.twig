@@ -21,12 +21,12 @@
         {% for county in counties %}
             <tr>
                 <th>{{ county.name }}</th>
-                <td>{{ county.covidCount }}</td>
-                <td>{{ county.covidDeaths }}</td>
+                <td>{{ county.cases }}</td>
+                <td>{{ county.deaths }}</td>
                 <td class="percentage">
-                    {{ movingAverage[county.name].percentage }}%
+                    {{ percentageChange(county.averages.0, county.averages.12) }}%
                 </td>
-                <td class="chart" data-dates="{{ movingAverage[county.name].date|json_encode() }}" data-averages="{{ movingAverage[county.name].average|json_encode() }}"></td>
+                <td class="chart" data-dates="{{ county.dates|json_encode() }}" data-averages="{{ county.averages|json_encode() }}"></td>
             </tr>
         {% endfor %}
         </tbody>

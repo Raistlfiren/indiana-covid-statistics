@@ -17,19 +17,49 @@ class DayRepository extends ServiceEntityRepository
         parent::__construct($registry, Day::class);
     }
 
-    public function getCountyMovingAverage($countyName)
+    public function getCountyMovingAverage($countyName = null)
     {
         $now = new \DateTime();
         $next14 = (new \DateTime())->modify('-14 days');
 
+        $qb = $this->createQueryBuilder('d');
+
+        if (!empty($countyName)) {
+            $qb->where('c.name = :county')
+                ->setParameter('county', $countyName);
+        }
+
+        return $qb
+            ->select('c.name', 'c.covidCount', 'c.covidDeaths', 'd.date', 'AVG(d1.covidCount) AS average')
+            ->innerJoin('d.county', 'c')
+            ->join(Day::class, 'd1', 'WITH', 'd.county = d1.county AND DATE_DIFF(d.date, d1.date) BETWEEN 0 AND 13')
+            ->andWhere('d.date BETWEEN :start AND :end')
+            ->setParameter('start',  $next14->format('Y-m-d'))
+            ->setParameter('end', $now->format('Y-m-d'))
+            ->groupBy('d.date')
+            ->addGroupBy('d.county')
+            ->orderBy('c.name')
+            ->addOrderBy('d.date', 'DESC')
+            ->getQuery()
+            ->getArrayResult();
+
+        $now = new \DateTime();
+        $next14 = (new \DateTime())->modify('-14 days');
+
         $conn = $this->getEntityManager()->getConnection();
+
+        $countyClause = '';
+
+        if (!empty($countyName)) {
+            $countyClause = 'AND c.name = \'' . $countyName . '\'';
+        }
 
         $sql = 'SELECT c.name, d1.date, d1.covid_count, ROUND(AVG(d2.covid_count)) AS 14DayAvg
             FROM day d1
             JOIN day d2 ON d1.county_id=d2.county_id AND DATEDIFF(d1.date, d2.date) BETWEEN 0 AND 13
             Inner JOIN county c on d1.county_id = c.id
             WHERE d1.date BETWEEN \'' . $next14->format('Y-m-d') . '\' AND \'' . $now->format('Y-m-d') . '\'
-            AND c.name = \'' . $countyName . '\'
+            ' . $countyClause . '
             GROUP BY d1.date, d1.county_id
             ORDER BY c.name, d1.date DESC
             ';
