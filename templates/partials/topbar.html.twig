@@ -1,7 +1,7 @@
 <nav class="navbar top-navbar">
     <div class="container">
         <div class="navbar-content">
-            <a href="#" class="navbar-brand">
+            <a href="{{ path('homepage') }}" class="navbar-brand">
                 IN COVID<span>19</span>
             </a>
             <ul class="navbar-nav">
@@ -12,13 +12,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/blog">
+                    <a class="nav-link" href="{{ path('county') }}">
+                        <i class="link-icon" data-feather="eye"></i>
+                        <span class="menu-title">Overview</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('blog_index') }}">
                         <i class="link-icon" data-feather="book-open"></i>
                         <span class="menu-title">Blog</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/Raistlfiren/indiana-covid-statistics">
+                    <a class="nav-link" href="https://github.com/Raistlfiren/indiana-covid-statistics" target="_blank">
                         <i class="link-icon" data-feather="code"></i>
                         <span class="menu-title">Code</span>
                     </a>
