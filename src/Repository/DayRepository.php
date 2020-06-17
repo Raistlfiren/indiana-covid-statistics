@@ -9,6 +9,7 @@ use App\Entity\Day;
 use App\Entity\Statistics;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use DateTime;
 
 class DayRepository extends ServiceEntityRepository
 {
@@ -17,7 +18,7 @@ class DayRepository extends ServiceEntityRepository
         parent::__construct($registry, Day::class);
     }
 
-    public function getCountyMovingAverage(\DateTime $currentDate, $countyName = null)
+    public function getCountyMovingAverage(DateTime $currentDate, $countyName = null)
     {
         $next14 = clone $currentDate;
         $next14 = $next14->modify('-14 days');
@@ -42,32 +43,6 @@ class DayRepository extends ServiceEntityRepository
             ->addOrderBy('d.date', 'DESC')
             ->getQuery()
             ->getArrayResult();
-
-        $now = new \DateTime();
-        $next14 = (new \DateTime())->modify('-14 days');
-
-        $conn = $this->getEntityManager()->getConnection();
-
-        $countyClause = '';
-
-        if (!empty($countyName)) {
-            $countyClause = 'AND c.name = \'' . $countyName . '\'';
-        }
-
-        $sql = 'SELECT c.name, d1.date, d1.covid_count, ROUND(AVG(d2.covid_count)) AS 14DayAvg
-            FROM day d1
-            JOIN day d2 ON d1.county_id=d2.county_id AND DATEDIFF(d1.date, d2.date) BETWEEN 0 AND 13
-            Inner JOIN county c on d1.county_id = c.id
-            WHERE d1.date BETWEEN \'' . $next14->format('Y-m-d') . '\' AND \'' . $now->format('Y-m-d') . '\'
-            ' . $countyClause . '
-            GROUP BY d1.date, d1.county_id
-            ORDER BY c.name, d1.date DESC
-            ';
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll();
     }
 
     public function getCaseMovingAverage($days, $countyName = null)
@@ -128,51 +103,35 @@ class DayRepository extends ServiceEntityRepository
 
     public function getWeeklyCaseSum($countyName = null)
     {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $countyClause = '';
+        $qb = $this->createQueryBuilder('d');
 
         if (!empty($countyName)) {
-            $countyClause = 'WHERE c.name = \'' . $countyName . '\'';
+            $qb->where('c.name = :county')
+                ->setParameter('county', $countyName);
         }
 
-        $sql = '
-            SELECT SUM(day.covid_count) AS total, CONCAT(DATE_FORMAT(date, "%m/%d/%Y"), \' - \', DATE_FORMAT(date + INTERVAL 6 DAY, "%m/%d/%Y")) AS week, WEEK(date) AS week_number
-                FROM day 
-                Inner JOIN county c on day.county_id = c.id
-                ' . $countyClause . '
-                GROUP BY WEEK(date) 
-                ORDER BY WEEK(date)
-        ';
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll();
+        return $qb->select('SUM(d.covidCount) AS total', 'WEEK(d.date) AS week_number', 'd.date')
+            ->join('d.county', 'c')
+            ->groupBy('week_number')
+            ->orderBy('week_number')
+            ->getQuery()
+            ->getResult();
     }
 
     public function getWeeklyDeathSum($countyName = null)
     {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $countyClause = '';
+        $qb = $this->createQueryBuilder('d');
 
         if (!empty($countyName)) {
-            $countyClause = 'WHERE c.name = \'' . $countyName . '\'';
+            $qb->where('c.name = :county')
+                ->setParameter('county', $countyName);
         }
 
-        $sql = '
-            SELECT SUM(day.covid_deaths) AS total, CONCAT(DATE_FORMAT(date, "%m/%d/%Y"), \' - \', DATE_FORMAT(date + INTERVAL 6 DAY, "%m/%d/%Y")) AS week, WEEK(date) AS week_number
-                FROM day 
-                Inner JOIN county c on day.county_id = c.id
-                ' . $countyClause . '
-                GROUP BY WEEK(date) 
-                ORDER BY WEEK(date)
-        ';
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll();
+        return $qb->select('SUM(d.covidDeaths) AS total', 'WEEK(d.date) AS week_number', 'd.date')
+            ->join('d.county', 'c')
+            ->groupBy('week_number')
+            ->orderBy('week_number')
+            ->getQuery()
+            ->getResult();
     }
 }

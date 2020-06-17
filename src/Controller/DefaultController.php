@@ -237,15 +237,23 @@ class DefaultController extends AbstractController
         }
 
         foreach ($allWeeklyCaseSum as $index => $allWeeklyCase) {
+            $endDateTime = clone $allWeeklyCase['date'];
+            $endDateTime->modify('+6 days');
+            $weekTitle = $allWeeklyCase['date']->format('m/d/Y') . ' - ' . $endDateTime->format('m/d/Y');
+
             $weeklyCaseTotal['all'][] = $allWeeklyCase['total'];
-            $weeklyCaseTotal['week'][] = $allWeeklyCase['week'];
+            $weeklyCaseTotal['week'][] = $weekTitle;
             $weeklyCaseTotal['county'][] = $weeklyCaseSum[$index]['total'];
             $weeklyCaseTotal['week_number'][] = $allWeeklyCase['week_number'];
         }
 
         foreach ($allWeeklyDeathSum as $index => $allWeeklyDeath) {
+            $endDateTime = clone $allWeeklyCase['date'];
+            $endDateTime->modify('+6 days');
+            $weekTitle = $allWeeklyCase['date']->format('m/d/Y') . ' - ' . $endDateTime->format('m/d/Y');
+
             $weeklyDeathTotal['all'][] = $allWeeklyDeath['total'];
-            $weeklyDeathTotal['week'][] = $allWeeklyDeath['week'];
+            $weeklyDeathTotal['week'][] = $weekTitle;
             $weeklyDeathTotal['county'][] = $weeklyDeathSum[$index]['total'];
             $weeklyDeathTotal['week_number'][] = $allWeeklyDeath['week_number'];
         }
