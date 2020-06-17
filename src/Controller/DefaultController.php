@@ -274,6 +274,7 @@ class DefaultController extends AbstractController
             'deathMovingAverage' => $deathMovingAverage,
             'weeklyCaseSum' => json_encode($weeklyCaseTotal),
             'weeklyDeathSum' => json_encode($weeklyDeathTotal),
+            'selectedCounty' => $selectedCounty
         ]);
     }
 }

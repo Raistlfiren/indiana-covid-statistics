@@ -18,7 +18,11 @@
             <select id="countySelector" class="input-group date datepicker dashboard-date mr-2 mb-2 mb-md-0 d-md-none d-xl-flex">
                 <option>Select a County</option>
                 {% for countyName in counties %}
-                    <option>{{ countyName.name }}</option>
+                    {% if selectedCounty is not empty and countyName.name == selectedCounty %}
+                        <option selected>{{ countyName.name }}</option>
+                    {% else %}
+                        <option>{{ countyName.name }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>

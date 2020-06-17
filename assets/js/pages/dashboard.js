@@ -36,15 +36,15 @@ countyChoices.passedElement.element.addEventListener(
     }
 )
 
-if (typeof(Storage) !== "undefined") {
-    let selectedCounty = localStorage.getItem('county');
-    if (selectedCounty !== null) {
-        window.selectedCounty = selectedCounty;
-        countyChoices.setValue([selectedCounty]);
-        if (window.location.href === window.homeRoute) {
-            window.location = window.homeRoute + selectedCounty;
-        }
-    }
-}
+// if (typeof(Storage) !== "undefined") {
+//     let selectedCounty = localStorage.getItem('county');
+//     if (selectedCounty !== null) {
+//         window.selectedCounty = selectedCounty;
+//         countyChoices.setValue([selectedCounty]);
+//         if (window.location.href === window.homeRoute) {
+//             window.location = window.homeRoute + selectedCounty;
+//         }
+//     }
+// }
 
 $('[data-toggle="popover"]').popover({html: true});
