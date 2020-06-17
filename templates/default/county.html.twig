@@ -7,24 +7,29 @@
 {% endblock %}
 
 {% block content %}
-    <table id="countyTable" class="table">
+    <style>
+        .toolbar {
+            float: left;
+        }
+    </style>
+    <table id="countyTable" class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th>County</th>
-            <th>Population</th>
-            <th>Cases</th>
-            <th>Deaths</th>
-            <th>Active Cases Based upon 14 days</th>
-            <th>14-Day Trend of Cases</th>
-            <th>Last 14 Days (Rolling) Average</th>
+            <th class="text-center font-weight-bolder">County</th>
+            <th class="text-center font-weight-bolder">Population</th>
+            <th class="text-center font-weight-bolder">Total <br> Cases</th>
+            <th class="text-center font-weight-bolder">Total <br> Deaths</th>
+            <th class="text-center font-weight-bolder">Active Cases <br> Based upon <br> 14 days<br>Incubation</th>
+            <th class="text-center font-weight-bolder">14-Day <br> Trend <br> of Cases</th>
+            <th class="text-center font-weight-bolder">Last 14 Days (Rolling) <br> Average</th>
         </tr>
         </thead>
         <tbody>
         {% for county in counties %}
             <tr>
-                <th>{{ county.name }}</th>
+                <th><a href="{{ path('homepage', {selectedCounty: county.name}) }}" class="text-black">{{ county.name }}</a></th>
                 <td>{{ county.population|number_format() }}</td>
-                <td>{{ county.cases }}</td>
+                <td>{{ county.cases|number_format() }}</td>
                 <td>{{ county.deaths }}</td>
                 <td>{{ county.activeCases }}</td>
                 <td class="percentage">

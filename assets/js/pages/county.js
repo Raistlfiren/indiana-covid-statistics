@@ -5,6 +5,7 @@ import ApexCharts from "apexcharts";
 
 $('#countyTable').DataTable({
     "paging": false,
+    "dom": '<"toolbar">frtip',
     "rowCallback": function(row, data, index) {
         let percentage = parseInt(data[5]);
         if (percentage > 0) {
@@ -13,18 +14,21 @@ $('#countyTable').DataTable({
         } else if (percentage < 0) {
             $('th', row).addClass('table-success');
             $('.percentage', row).addClass('text-success');
-        } else {
-            $('th', row).addClass('table-warning');
-            $('.percentage', row).addClass('text-warning');
         }
+        // else {
+        //     $('th', row).addClass('table-warning');
+        //     $('.percentage', row).addClass('text-warning');
+        // }
     }
 });
+
+$("div.toolbar").html('<h2>County Overview</h2>');
 
 const sparklineOptions = {
     chart: {
         type: "bar",
-        width: 400,
-        height: 50,
+        // width: 300,
+        height: 25,
         sparkline: {
             enabled: true
         }
@@ -32,16 +36,39 @@ const sparklineOptions = {
     dataLabels: {
         enabled: true,
         style: {
-            colors: ['#000000']
+            fontSize: '12px',
+            // colors: ['#ffffff']
+            // colors: [function({ value, seriesIndex, w }) {
+            //     console.log(value, seriesIndex, w);
+            //     return '#ffffff';
+            // }],
         },
-    },
-    yaxis: {
-        labels: {
-            formatter: function(val) {
-                return Math.floor(val)
+        background: {
+            enabled: true,
+            foreColor: '#000',
+            borderColor: '#000',
+            opacity: 0.5
+        },
+        formatter: function(val, opt) {
+            if (opt.dataPointIndex == 0 || opt.dataPointIndex == 13) {
+                return val;
             }
-        }
+        },
+        // offsetX: function(val, opt) {
+        //     if (opt.dataPointIndex == 0) {
+        //         return -20;
+        //     } else if (opt.dataPointIndex == 12) {
+        //         return 20;
+        //     }
+        // },
     },
+    // yaxis: {
+    //     labels: {
+    //         formatter: function(val) {
+    //             return Math.floor(val)
+    //         }
+    //     }
+    // },
     stroke: {
         width: 2,
         curve: "smooth"
