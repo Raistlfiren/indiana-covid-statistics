@@ -17,10 +17,10 @@ class DayRepository extends ServiceEntityRepository
         parent::__construct($registry, Day::class);
     }
 
-    public function getCountyMovingAverage($countyName = null)
+    public function getCountyMovingAverage(\DateTime $currentDate, $countyName = null)
     {
-        $now = new \DateTime();
-        $next14 = (new \DateTime())->modify('-14 days');
+        $next14 = clone $currentDate;
+        $next14 = $next14->modify('-14 days');
 
         $qb = $this->createQueryBuilder('d');
 
@@ -35,7 +35,7 @@ class DayRepository extends ServiceEntityRepository
             ->join(Day::class, 'd1', 'WITH', 'd.county = d1.county AND DATE_DIFF(d.date, d1.date) BETWEEN 0 AND 13')
             ->andWhere('d.date BETWEEN :start AND :end')
             ->setParameter('start',  $next14->format('Y-m-d'))
-            ->setParameter('end', $now->format('Y-m-d'))
+            ->setParameter('end', $currentDate->format('Y-m-d'))
             ->groupBy('d.date')
             ->addGroupBy('d.county')
             ->orderBy('c.name')

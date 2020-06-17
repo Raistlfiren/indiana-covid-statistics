@@ -32,7 +32,9 @@ class DefaultController extends AbstractController
     public function countyOverview(DayRepository $dayRepository, CountyRepository $countyRepository)
     {
         $counties = [];
-        $movingAverages = $dayRepository->getCountyMovingAverage();
+        //Base starting date on last pull of data...
+        $county = $countyRepository->findOneBy(['name' => 'Rush']);
+        $movingAverages = $dayRepository->getCountyMovingAverage($county->getCreatedAt());
         foreach ($movingAverages as $index => $movingAverage) {
             $name = $movingAverage['name'];
             if (isset($counties[$name])) {

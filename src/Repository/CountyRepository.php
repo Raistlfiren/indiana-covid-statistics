@@ -5,6 +5,7 @@ namespace App\Repository;
 
 
 use App\Entity\County;
+use App\Entity\Day;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -33,6 +34,7 @@ class CountyRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
 
     public function findWithDays()
     {
