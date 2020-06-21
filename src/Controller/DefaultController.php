@@ -94,8 +94,9 @@ class DefaultController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        $caseMovingAverage = $dayRepository->getCaseMovingAverage(7, $county->getCreatedAt(), $county->getName());
-        $deathMovingAverage = $dayRepository->getDeathMovingAverage(7, $county->getCreatedAt(), $county->getName());
+
+        $caseMovingAverage = $dayRepository->getCaseMovingAverage(7, $county);
+        $deathMovingAverage = $dayRepository->getDeathMovingAverage(7, $county);
         $counties = $countyRepository->findBy([], ['name' => 'ASC']);
         $currentStatistics = $statisticsRepository->findOneBy(['county' => $county]);
         $hospitalStatistics = $hospitalRepository->findOneBy(['county' => $county]);

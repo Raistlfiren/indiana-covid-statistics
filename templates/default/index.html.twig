@@ -41,8 +41,8 @@
         <p>
             {% set casesDayAverage = percentageChange(caseMovingAverage.0.dayAvg, caseMovingAverage.0.prevDayAvg) %}
             {% set deathsDayAverage = percentageChange(deathMovingAverage.0.dayAvg, deathMovingAverage.0.prevDayAvg) %}
-            Over the past 14 days {{ county.name }} county has had an average of <strong>{{ caseMovingAverage.0.dayAvg }}</strong> cases
-            and <strong>{{ deathMovingAverage.0.dayAvg }}</strong> deaths per day. Based upon yesterday's data, {{ county.name }} counties
+            Over the past 14 days {{ county.name }} county has had an average of <strong>{{ caseMovingAverage.0.dayAvg|round }}</strong> cases
+            and <strong>{{ deathMovingAverage.0.dayAvg|round }}</strong> deaths per day. Based upon yesterday's data, {{ county.name }} counties
             cases are {{ overviewChart.textpercentageChange(caseMovingAverage.0.dayAvg, caseMovingAverage.0.prevDayAvg) }} and
             deaths are {{ overviewChart.textpercentageChange(deathMovingAverage.0.dayAvg, deathMovingAverage.0.prevDayAvg) }}.
 

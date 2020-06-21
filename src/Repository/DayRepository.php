@@ -45,15 +45,17 @@ class DayRepository extends ServiceEntityRepository
             ->getArrayResult();
     }
 
-    public function getCaseMovingAverage($days, DateTime $latestDate, $countyName = null)
+    public function getCaseMovingAverage($days, County $county = null)
     {
+        $latestDate = clone $county->getCreatedAt();
+
         $days--;
 
         $qb = $this->createQueryBuilder('d');
 
-        if (!empty($countyName)) {
+        if (! empty($county)) {
             $qb->where('c.name = :county')
-                ->setParameter('county', $countyName);
+                ->setParameter('county', $county->getName());
         }
 
         return $qb
@@ -73,15 +75,17 @@ class DayRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function getDeathMovingAverage($days, DateTime $latestDate, $countyName = null)
+    public function getDeathMovingAverage($days, County $county = null)
     {
+        $latestDate = clone $county->getCreatedAt();
+
         $days--;
 
         $qb = $this->createQueryBuilder('d');
 
-        if (!empty($countyName)) {
+        if (! empty($county)) {
             $qb->where('c.name = :county')
-                ->setParameter('county', $countyName);
+                ->setParameter('county', $county->getName());
         }
 
         return $qb
