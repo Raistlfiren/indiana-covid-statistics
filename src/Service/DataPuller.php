@@ -6,13 +6,13 @@ use App\Entity\Age;
 use App\Entity\County;
 use App\Entity\Day;
 use App\Entity\Ethnicity;
+use App\Entity\HistoryDay;
 use App\Entity\Hospital;
 use App\Entity\Race;
 use App\Entity\Sex;
 use App\Entity\Statistics;
 use App\Repository\CountyRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Serializer\SerializerInterface;
 
 class DataPuller
 {
@@ -59,7 +59,7 @@ class DataPuller
     {
         $data = json_decode($data);
 
-        return $data && property_exists($data, 'objects');
+        return $data && property_exists($data, 'objects') && count($data->objects->cb_2015_indiana_county_20m->geometries) === 92;
     }
 
     public function refreshDatabase($data)
@@ -70,6 +70,7 @@ class DataPuller
 
         $counties = $data->objects->cb_2015_indiana_county_20m->geometries;
 
+        $currentDatetime = new \DateTime('now', new \DateTimeZone('CST6CDT'));
         foreach ($counties as $county) {
             $countyProperties = $county->properties;
             $countyEntity = $this->countyRepository->findOneBy(['name' => $countyProperties->NAME]);
@@ -79,7 +80,7 @@ class DataPuller
                 $countyEntity->setName($countyProperties->NAME);
             }
 
-            $countyEntity->setCreatedAt(new \DateTime('now', new \DateTimeZone('CST6CDT')));
+            $countyEntity->setCreatedAt($currentDatetime);
             $countyEntity->setPopulation($countyProperties->POPULATION);
             $countyEntity->setCovidCount($countyProperties->COVID_COUNT);
             $countyEntity->setCovidCountProb($countyProperties->COVID_COUNT_PROB);
@@ -172,6 +173,7 @@ class DataPuller
                 //Exclude some faulty data from the dataset that dates back to 1983...
                 if ($datetime > new \DateTime('01-01-20')) {
                     $countyEntity->addDay($dayEntity);
+                    $this->storeHistoricalData($datetime, $currentDatetime, $countyEntity, $date);
                 }
             }
 
@@ -241,4 +243,102 @@ class DataPuller
         $connection->query('SET FOREIGN_KEY_CHECKS=1');
         $connection->commit();
     }
+
+    public function storeHistoricalData(\DateTime $datetime, \DateTime $currentDatetime, County $countyEntity, $date)
+    {
+        $dayEntity = new HistoryDay();
+        $dayEntity->setDateAcquired($currentDatetime);
+        $dayEntity->setDate($datetime);
+        $dayEntity->setCovidTest($date->COVID_TEST);
+        $dayEntity->setDailyDeltaTests($date->DAILY_DELTA_TESTS);
+        $dayEntity->setDailyBaseTests($date->DAILY_BASE_TESTS);
+        $dayEntity->setDailyBaseCasesProb($date->DAILY_BASE_CASES_PROB);
+        $dayEntity->setDailyBaseCases($date->DAILY_BASE_CASES);
+        $dayEntity->setDailyBaseDeathsProb($date->DAILY_BASE_DEATHS_PROB);
+        $dayEntity->setDailyBaseDeaths($date->DAILY_BASE_DEATHS);
+        $dayEntity->setCovidCountProb($date->COVID_COUNT_PROB);
+        $dayEntity->setCovidCount($date->COVID_COUNT);
+        $dayEntity->setCovidDeathsProb($date->COVID_DEATHS_PROB);
+        $dayEntity->setCovidDeaths($date->COVID_DEATHS);
+        $dayEntity->setDailyDeltaCasesProb($date->DAILY_DELTA_CASES_PROB);
+        $dayEntity->setDailyDeltaCases($date->DAILY_DELTA_CASES);
+        $dayEntity->setDailyDeltaDeathsProb($date->DAILY_DELTA_DEATHS_PROB);
+        $dayEntity->setDailyDeltaDeaths($date->DAILY_DELTA_DEATHS);
+        $dayEntity->setCovidCountCumsum($date->COVID_COUNT_CUMSUM);
+        $dayEntity->setCovidDeathsCumsum($date->COVID_DEATHS_CUMSUM);
+        $dayEntity->setCovidCountCumsumProb($date->COVID_COUNT_CUMSUM_PROB);
+        $dayEntity->setCovidDeathsCumsumProb($date->COVID_DEATHS_CUMSUM_PROB);
+        $dayEntity->setCovidTestCumsum($date->COVID_TEST_CUMSUM);
+        $dayEntity->setCounty($countyEntity);
+
+        $this->entityManager->persist($dayEntity);
+    }
+
+//    public function storeHistoricalData()
+//    {
+//
+//        $it = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator(__DIR__ . '/../../Resources/coronavirus.in.gov'));
+//
+//        /** @var \DirectoryIterator $it */
+//        $it->rewind();
+//        while($it->valid()) {
+//
+//            if (!$it->isDot()) {
+//                $data = file_get_contents($it->key());
+//                $filename = $it->getFilename();
+//                $filename = str_replace('covid-', '', $filename);
+//                $datePulled = str_replace('.topojson', '', $filename);
+//                $currentDate = \DateTime::createFromFormat('m-d-y', $datePulled);
+//
+//                $data = json_decode($data);
+//
+//                $counties = $data->objects->cb_2015_indiana_county_20m->geometries;
+//
+//                foreach ($counties as $county) {
+//                    $countyProperties = $county->properties;
+//                    $countyEntity = $this->countyRepository->findOneBy(['name' => $countyProperties->NAME]);
+//
+//                    foreach ($countyProperties->VIZ_DATE as $date) {
+//                        $dayEntity = new HistoryDay();
+//                        $datetime = new \DateTime($date->DATE);
+//                        $dayEntity->setDateAcquired($currentDate);
+//                        $dayEntity->setDate($datetime);
+//                        $dayEntity->setCovidTest($date->COVID_TEST);
+//                        $dayEntity->setDailyDeltaTests($date->DAILY_DELTA_TESTS);
+//                        $dayEntity->setDailyBaseTests($date->DAILY_BASE_TESTS);
+//                        $dayEntity->setDailyBaseCasesProb($date->DAILY_BASE_CASES_PROB);
+//                        $dayEntity->setDailyBaseCases($date->DAILY_BASE_CASES);
+//                        $dayEntity->setDailyBaseDeathsProb($date->DAILY_BASE_DEATHS_PROB);
+//                        $dayEntity->setDailyBaseDeaths($date->DAILY_BASE_DEATHS);
+//                        $dayEntity->setCovidCountProb($date->COVID_COUNT_PROB);
+//                        $dayEntity->setCovidCount($date->COVID_COUNT);
+//                        $dayEntity->setCovidDeathsProb($date->COVID_DEATHS_PROB);
+//                        $dayEntity->setCovidDeaths($date->COVID_DEATHS);
+//                        $dayEntity->setDailyDeltaCasesProb($date->DAILY_DELTA_CASES_PROB);
+//                        $dayEntity->setDailyDeltaCases($date->DAILY_DELTA_CASES);
+//                        $dayEntity->setDailyDeltaDeathsProb($date->DAILY_DELTA_DEATHS_PROB);
+//                        $dayEntity->setDailyDeltaDeaths($date->DAILY_DELTA_DEATHS);
+//                        $dayEntity->setCovidCountCumsum($date->COVID_COUNT_CUMSUM);
+//                        $dayEntity->setCovidDeathsCumsum($date->COVID_DEATHS_CUMSUM);
+//                        $dayEntity->setCovidCountCumsumProb($date->COVID_COUNT_CUMSUM_PROB);
+//                        $dayEntity->setCovidDeathsCumsumProb($date->COVID_DEATHS_CUMSUM_PROB);
+//                        $dayEntity->setCovidTestCumsum($date->COVID_TEST_CUMSUM);
+//                        $dayEntity->setCounty($countyEntity);
+//
+//                        if ($datetime > new \DateTime('01-01-20')) {
+//                            $this->entityManager->persist($dayEntity);
+//                        }
+//                    }
+//
+//                }
+//
+//                $this->entityManager->flush();
+//                $this->entityManager->clear();
+//
+//            }
+//
+//            $it->next();
+//        }
+//
+//    }
 }
