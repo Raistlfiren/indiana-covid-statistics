@@ -445,6 +445,32 @@
         </div>
     </div> <!-- row -->
 
+    <div class="row">
+        <div id="caseCountScatter" class="col-12 col-xl-12 grid-margin stretch-card">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
+                        <h6 class="card-title mb-0">Count Scatter</h6>
+                        <button class="btn p-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-lg text-muted pb-3px" data-feather="help-circle"></i>
+                        </button>
+                    </div>
+                    <div class="row align-items-start mb-2">
+                        <div class="col-md-12">
+                            <p class="text-muted tx-13 mb-3 mb-md-0">
+                                This is an outlook of how the data has changed over time. Currently, it showcases the min, max, and average
+                                of COVID-19 cases starting at May 19 when I started extracting data.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flot-wrapper">
+                        <div id="dateCountChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- row -->
+
 {% endblock %}
 
 
@@ -464,6 +490,7 @@
         window.dailyVents = JSON.parse('{{ dailyVents|raw }}');
         window.weeklyCaseSum = JSON.parse('{{ weeklyCaseSum|raw }}');
         window.weeklyDeathSum = JSON.parse('{{ weeklyDeathSum|raw }}');
+        window.aggregatedValidates = JSON.parse('{{ aggregatedValidates|raw }}');
         window.homeRoute = '{{ url('homepage') }}';
     </script>
 {% endblock %}

@@ -13,6 +13,7 @@ import './dashboard/bar/race';
 import './dashboard/bar/ethnicity';
 import './dashboard/donut/bed';
 import './dashboard/donut/vent';
+import './dashboard/scatter/case';
 
 import 'popper.js';
 import 'bootstrap/js/dist/popover';

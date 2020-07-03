@@ -13,15 +13,18 @@ use App\Repository\AgeRepository;
 use App\Repository\CountyRepository;
 use App\Repository\DayRepository;
 use App\Repository\EthnicityRepository;
+use App\Repository\HistoryDayRepository;
 use App\Repository\HospitalRepository;
 use App\Repository\RaceRepository;
 use App\Repository\SexRepository;
 use App\Repository\StatisticsRepository;
+use App\Service\DataPuller;
 use App\Service\INDataHubPuller;
 use MathPHP\Statistics\Average;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class DefaultController extends AbstractController
 {
@@ -83,10 +86,10 @@ class DefaultController extends AbstractController
         EthnicityRepository $ethnicityRepository,
         SexRepository $sexRepository,
         RaceRepository $raceRepository,
+        HistoryDayRepository $historyDayRepository,
         string $selectedCounty = 'Marion'
     )
     {
-
         $county = $countyRepository->findOneBy(['name' => $selectedCounty]);
 
         if ($county === null) {
@@ -105,12 +108,25 @@ class DefaultController extends AbstractController
         $sexStatistics = $sexRepository->findBy(['county' => $county]);
         $raceStatistics = $raceRepository->findBy(['county' => $county]);
         $dailyStatistics = $dayRepository->findBy(['county' => $county], ['date' => 'DESC']);
-        //$previousDay = $dayRepository->findOneBy(['county' => $county, 'date' => $date->modify('-1 day')]);
         $weeklyCaseSum = $dayRepository->getWeeklyCaseSum($county->getName());
         $allWeeklyCaseSum = $dayRepository->getWeeklyCaseSum();
         $weeklyDeathSum = $dayRepository->getWeeklyDeathSum($county->getName());
         $allWeeklyDeathSum = $dayRepository->getWeeklyDeathSum();
         $previousDay = $dailyStatistics[1];
+
+        $aggregatedCounts = $historyDayRepository->aggregateData($county);
+        $dailyCounts = $historyDayRepository->getLatestData($county);
+
+        //$pastData = $historyDayRepository->findBy(['county' => $county], ['dateAcquired' => 'ASC', 'date' => 'DESC']);
+
+        $aggregatedValidates = [];
+        foreach ($aggregatedCounts as $index => $aggregatedCount) {
+            $aggregatedValidates['min'][] = $aggregatedCount['min_count'];
+            $aggregatedValidates['max'][] = $aggregatedCount['max_count'];
+            $aggregatedValidates['avg'][] = $aggregatedCount['avg_count'];
+            $aggregatedValidates['currents'][] = $dailyCounts[$index]['covidCount'];
+            $aggregatedValidates['date'][] = $aggregatedCount['date']->format('m/d/Y');
+        }
 
         $cases = [];
         $tests = [];
@@ -283,7 +299,9 @@ class DefaultController extends AbstractController
             'deathMovingAverage' => $deathMovingAverage,
             'weeklyCaseSum' => json_encode($weeklyCaseTotal),
             'weeklyDeathSum' => json_encode($weeklyDeathTotal),
-            'selectedCounty' => $selectedCounty
+            'selectedCounty' => $selectedCounty,
+            'aggregatedValidates' => json_encode($aggregatedValidates),
+//            'pastData' => $pastData
         ]);
     }
 }
