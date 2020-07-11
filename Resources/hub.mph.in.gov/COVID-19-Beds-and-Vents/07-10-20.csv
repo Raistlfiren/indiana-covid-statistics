@@ -1,0 +1,10 @@
+﻿_id,STATUS_TYPE,TOTAL
+1,beds_all_occupied_beds_covid_19,667
+2,beds_icu_total,2448
+3,beds_icu_occupied_beds_covid_19,217
+4,bed_occupied_icu_non_covid,1271
+5,beds_available_icu_beds_total,960
+6,vents_total,2937
+7,vents_all_in_use_covid_19,87
+8,vents_non_covid_pts_on_vents,376
+9,vents_all_available_vents_not_in_use,2474
