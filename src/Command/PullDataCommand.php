@@ -49,12 +49,16 @@ class PullDataCommand extends Command
 
         $output->writeln('Pulling data');
         $data = $this->dataPuller->pull();
+        $data2 = $this->dataPuller->pullLTC();
+        $data3 = $this->dataPuller->pullUniversal();
         $output->writeln('Data pulled');
         $output->writeln('Validating data');
         if ($this->dataPuller->isValidData($data)) {
             $output->writeln('Data valid');
             $output->writeln('Backing up data to file');
             $this->dataPuller->backupData($data);
+            $this->dataPuller->backupLTC($data2);
+            $this->dataPuller->backupUniversal($data3);
             $output->writeln('Data backed up to file');
             $output->writeln('Refreshing database');
             $this->dataPuller->refreshDatabase($data);
