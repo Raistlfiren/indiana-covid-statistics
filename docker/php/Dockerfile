@@ -14,8 +14,8 @@ RUN set -xe \
 
 WORKDIR /var/www/html
 
-COPY . /var/www/html
+# COPY . /var/www/html
 
 # Install composer
-RUN curl --show-error --silent https://getcomposer.org/installer | php \
-    && php composer.phar install -v
+# RUN curl --show-error --silent https://getcomposer.org/installer | php -- \
+#    --install-dir=/usr/bin --filename=composer && chmod +x /usr/bin/composer && composer install -v

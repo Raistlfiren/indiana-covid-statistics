@@ -10,6 +10,8 @@ services:
     container_name: mysql
     image: mysql:5.7
     command: mysqld --sql_mode=""
+    volumes:
+      - ./mysql/dump:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: symfony
       MYSQL_DATABASE: symfony  # Database will be created on start
@@ -30,7 +32,7 @@ services:
       context: .
       dockerfile: ./docker/php/Dockerfile
     volumes:
-      - ./var:/var/www/html/var
+      - .:/var/www/html
     environment:
       DATABASE_URL: mysql://symfony:symfony@mysql:3306/symfony?serverVersion=5.7
       APP_ENV: dev  # For debugging purpose we built it as a dev version
@@ -41,6 +43,8 @@ services:
         condition: service_healthy    # DB service must be in healthy state to start this App
   nginx:
     container_name: nginx
+    volumes:
+      - .:/var/www/html
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
@@ -51,6 +55,12 @@ services:
       - mysql          # DB must be ready
   encore:
     image: node:alpine
+    command: ["yarn", "install"]
     volumes:
       - .:/app
     working_dir: /app
+  composer:
+    image: composer:latest
+    command: install
+    volumes:
+      - .:/app
