@@ -28,7 +28,7 @@ class INDataHubPuller
 
                             //Generate URL to get data
                             $url = 'https://hub.mph.in.gov/datastore/dump/' . $id . '?bom=True';
-                            $data = file_get_contents($url);
+                            $data = @file_get_contents($url);
 
                             $filePath = __DIR__ . '/../../Resources/hub.mph.in.gov/' . $name . '/';
 
