@@ -5,6 +5,8 @@ RUN set -xe \
     && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
     && apk add git \
     && docker-php-ext-install pdo pdo_mysql \
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug \
     && rm -rf /usr/share/php \
     && rm -rf /tmp/* \
     && apk del  .phpize-deps

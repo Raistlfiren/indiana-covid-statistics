@@ -11,7 +11,7 @@ services:
     image: mysql:5.7
     command: mysqld --sql_mode=""
     volumes:
-      - ./mysql/dump:/docker-entrypoint-initdb.d
+      - ./docker/mysql/dump:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: symfony
       MYSQL_DATABASE: symfony  # Database will be created on start
@@ -33,6 +33,7 @@ services:
       dockerfile: ./docker/php/Dockerfile
     volumes:
       - .:/var/www/html
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     environment:
       DATABASE_URL: mysql://symfony:symfony@mysql:3306/symfony?serverVersion=5.7
       APP_ENV: dev  # For debugging purpose we built it as a dev version
@@ -49,7 +50,7 @@ services:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
     ports:
-      - "8011:80"   # Webserver will run on http://localhost:8011
+      - "80:80"   # Webserver will run on http://localhost:8011
     depends_on:
       - php     # Web App service must be running
       - mysql          # DB must be ready
