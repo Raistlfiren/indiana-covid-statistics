@@ -4,6 +4,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * Class Age
@@ -17,11 +19,13 @@ class Age
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string")
+     * @Groups({"display"})
      */
     private $age;
 
@@ -32,6 +36,7 @@ class Age
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $covidCount;
 
@@ -42,6 +47,7 @@ class Age
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $covidDeaths;
 
@@ -52,6 +58,7 @@ class Age
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $covidTest;
 

@@ -30,7 +30,7 @@ class DefaultController extends AbstractController
 {
     /**
      * @param DayRepository $dayRepository
-     * @Route("/county", name="county")
+     * @Route("/countysummary", name="countysummary")
      */
     public function countyOverview(DayRepository $dayRepository, CountyRepository $countyRepository)
     {
@@ -75,7 +75,7 @@ class DefaultController extends AbstractController
      * @param string $selectedCounty
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @Route("/{selectedCounty}", name="homepage")
+     * @Route("/count/{selectedCounty}", name="homepage")
      */
     public function indexAction(
         CountyRepository $countyRepository,

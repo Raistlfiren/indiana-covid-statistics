@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Class Day
@@ -17,16 +18,19 @@ class Day
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"display"})
      */
     private $date;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $covidTest;
 
@@ -67,6 +71,7 @@ class Day
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $covidCount;
 
@@ -77,6 +82,7 @@ class Day
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $covidDeaths;
 

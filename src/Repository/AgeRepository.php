@@ -17,4 +17,17 @@ class AgeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Age::class);
     }
+
+    public function getAgeDetailsByCounty($countyName)
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        return $qb
+            ->select('a')
+            ->innerJoin('a.county', 'c')
+            ->where('c.name = :county')
+            ->setParameter('county', $countyName)
+            ->getQuery()
+            ->getResult();
+    }
 }

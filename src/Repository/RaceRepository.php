@@ -17,4 +17,17 @@ class RaceRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Race::class);
     }
+
+    public function getRaceDetailsByCounty($countyName)
+    {
+        $qb = $this->createQueryBuilder('r');
+
+        return $qb
+            ->select('r')
+            ->innerJoin('r.county', 'c')
+            ->where('c.name = :county')
+            ->setParameter('county', $countyName)
+            ->getQuery()
+            ->getResult();
+    }
 }

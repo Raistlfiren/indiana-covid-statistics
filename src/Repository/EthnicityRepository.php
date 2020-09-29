@@ -17,4 +17,17 @@ class EthnicityRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Ethnicity::class);
     }
+
+    public function getEthnicityDetailsByCounty($countyName)
+    {
+        $qb = $this->createQueryBuilder('e');
+
+        return $qb
+            ->select('e')
+            ->innerJoin('e.county', 'c')
+            ->where('c.name = :county')
+            ->setParameter('county', $countyName)
+            ->getQuery()
+            ->getResult();
+    }
 }

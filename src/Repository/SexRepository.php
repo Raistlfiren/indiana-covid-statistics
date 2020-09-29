@@ -17,4 +17,17 @@ class SexRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Sex::class);
     }
+
+    public function getSexDetailsByCounty($countyName)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        return $qb
+            ->select('s')
+            ->innerJoin('s.county', 'c')
+            ->where('c.name = :county')
+            ->setParameter('county', $countyName)
+            ->getQuery()
+            ->getResult();
+    }
 }

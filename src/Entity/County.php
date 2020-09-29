@@ -5,7 +5,8 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class County
@@ -15,54 +16,77 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  */
 class County
 {
-    use TimestampableEntity;
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string")
+     * @Groups({"display"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $district;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $covidCount;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $covidCountProb;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $covidDeaths;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"display"})
      */
     private $covidDeathsProb;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $covidTest;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $population;
+
+    /**
+     * @var \DateTime
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     * @Groups({"display"})
+     */
+    protected $createdAt;
+
+    /**
+     * @var \DateTime
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     * @Groups({"display"})
+     */
+    protected $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Sex", mappedBy="county", cascade={"persist", "remove"})
@@ -277,6 +301,53 @@ class County
     {
         $this->population = $population;
         return $this;
+    }
+
+
+    /**
+     * Sets createdAt.
+     *
+     * @param  \DateTime $createdAt
+     * @return $this
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Returns createdAt.
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Sets updatedAt.
+     *
+     * @param  \DateTime $updatedAt
+     * @return $this
+     */
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Returns updatedAt.
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 
     /**

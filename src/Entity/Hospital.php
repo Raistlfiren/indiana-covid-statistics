@@ -4,6 +4,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Class Hospital
@@ -17,51 +18,61 @@ class Hospital
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $bedsAllOccupiedBedsCovid;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $bedsIcuTotal;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $bedsIcuOccupiedBedsCovid;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $bedOccupiedIcuNonCovid;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $bedsAvailableIcuBedsTtotal;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $ventsTotal;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $ventsAllInUseCovid;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $ventsNonCovidPtsOnVents;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"display"})
      */
     private $ventsAllAvailableVentsNotInUse;
 

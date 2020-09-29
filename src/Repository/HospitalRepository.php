@@ -17,4 +17,17 @@ class HospitalRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Hospital::class);
     }
+
+    public function getHospitalStatisticsByCounty($countyName)
+    {
+        $qb = $this->createQueryBuilder('h');
+
+        return $qb
+            ->select('h')
+            ->innerJoin('h.county', 'c')
+            ->where('c.name = :county')
+            ->setParameter('county', $countyName)
+            ->getQuery()
+            ->getSingleResult();
+    }
 }

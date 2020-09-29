@@ -42,3 +42,19 @@ Running `./bin/console app:pull-data` will do the following:
 2) Backup the data to its own file under Resources/coronavirus.in.gov/
 3) Delete data from the MYSQL database
 4) Put the latest data into the MYSQL database
+
+###
+## Using the project with Docker
+##  docker-compose run encore yarn add axios --dev
+###
+1) `docker-compose up`
+2) yarn install - copy over assets `docker-compose run encore yarn run watch`
+3) composer install `docker-compose run composer`
+
+Removing and stopping all docker containers:
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+
+babel-polyfill babel-preset-env --dev allow us to use the arrow for shorthand REACT functions
+docker-compose run encore yarn add dayjs --dev
+docker run --volume $PWD:/app composer require symfony/serializer

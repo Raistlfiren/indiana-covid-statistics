@@ -18,6 +18,20 @@ class DayRepository extends ServiceEntityRepository
         parent::__construct($registry, Day::class);
     }
 
+    public function getDaysByCounty($countyName)
+    {
+        $qb = $this->createQueryBuilder('d');
+
+        return $qb
+            ->select('d.id', 'd.date', 'd.covidCount', 'd.covidDeaths', 'd.covidTest')
+            ->innerJoin('d.county', 'c')
+            ->where('c.name = :county')
+            ->setParameter('county', $countyName)
+            ->orderBy('d.date', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function getCountyMovingAverage(DateTime $currentDate, $countyName = null)
     {
         $next14 = clone $currentDate;
@@ -137,5 +151,22 @@ class DayRepository extends ServiceEntityRepository
             ->orderBy('week_number')
             ->getQuery()
             ->getResult();
+    }
+
+    public function getChartCaseCount($county = null)
+    {
+        $qb = $this->createQueryBuilder('d');
+
+        $qb->select('d.covidCount')
+            ->addSelect('d.date');
+
+        if (! empty($county)) {
+            $qb->join('d.county', 'county');
+            $qb->where('county.name = :county')->setParameter('county', $county);
+        }
+
+        $qb->orderBy('d.date', 'DESC');
+
+        return $qb->getQuery()->getArrayResult();
     }
 }
