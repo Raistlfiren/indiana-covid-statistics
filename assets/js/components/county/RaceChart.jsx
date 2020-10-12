@@ -75,7 +75,7 @@ class RaceChart extends React.Component {
                             <div className="flot-wrapper">
                                 <Chart
                                     type="bar"
-                                    stacked={true}
+                                    stacked="true"
                                     series={series.series}
                                     options={options}
                                     height="350"

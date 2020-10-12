@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from "./Header";
 import Disclaimer from "./Disclaimer";
 import Overcast from "./Overcast";
@@ -32,12 +32,14 @@ const DEFAULT_COUNTY = {
 }
 
 class Dashboard extends React.Component {
+
     constructor(props) {
         super(props);
 
         this.handleChange = this.handleChange.bind(this);
 
         this.state = {
+            countyName: this.props.match.params.county,
             county: DEFAULT_COUNTY,
             days: [],
             dailyDates: [],
@@ -55,8 +57,9 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount() {
-        this.getCounty(this.props.match.params.county);
-        this.getDays(this.props.match.params.county);
+        this.getCounty(this.state.countyName)
+        this.getDays(this.state.countyName)
+        this.updatePageTitle(this.state.countyName)
     }
 
     getCounty(countyName) {
@@ -184,13 +187,18 @@ class Dashboard extends React.Component {
         return (((x - y)/y) * 100).toFixed(0);
     }
 
+    updatePageTitle(countyName) {
+        document.title = countyName + ' County Dashboard'
+    }
+
     handleChange(event) {
         this.getCounty(event.target.value);
         this.getDays(event.target.value);
+        this.updatePageTitle(event.target.value);
     }
 
     render() {
-        const { county, days, dailyDates, dailyCovidTests, dailyCovidCount, dailyCovidDeaths, weeklyGroupingSum, dailyCovidTestsSMA, dailyCovidCountSMA, dailyCovidDeathsSMA, isLoading, error } = this.state;
+        const { countyName, county, days, dailyDates, dailyCovidTests, dailyCovidCount, dailyCovidDeaths, weeklyGroupingSum, dailyCovidTestsSMA, dailyCovidCountSMA, dailyCovidDeathsSMA, isLoading, error } = this.state;
 
         if (isLoading) {
             return <div>Loading</div>
@@ -213,12 +221,12 @@ class Dashboard extends React.Component {
                                 dailyCovidCases={dailyCovidCount}
                                  dailyCovidTests={dailyCovidTests}
                                  dailyCovidDeaths={dailyCovidDeaths}
-                                 countyName={this.props.match.params.county}
+                                 countyName={countyName}
                                  county={county}
                                  percentageChange={this.percentageChange}
                 />
                 <HospitalCharts
-                    countyName={this.props.match.params.county}
+                    countyName={countyName}
                 />
                 <WeeklySumCharts
                     isLoading={isLoading}
@@ -236,7 +244,7 @@ class Dashboard extends React.Component {
                     padArrayLeft={this.padArrayLeft}
                 />
                 <BarCharts
-                    countyName={this.props.match.params.county}
+                    countyName={countyName}
                 />
             </div>
         );
