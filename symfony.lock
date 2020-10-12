@@ -87,6 +87,9 @@
     "gedmo/doctrine-extensions": {
         "version": "v2.4.41"
     },
+    "league/csv": {
+        "version": "9.6.1"
+    },
     "markrogoyski/math-php": {
         "version": "v1.1.0"
     },

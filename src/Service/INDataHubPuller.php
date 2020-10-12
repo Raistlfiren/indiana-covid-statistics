@@ -6,7 +6,7 @@ namespace App\Service;
 
 class INDataHubPuller
 {
-    const IN_DATA_HUB_COVID_URL = 'https://hub.mph.in.gov/api/3/action/package_search?fq=tags:COVID';
+    const IN_DATA_HUB_COVID_URL = 'https://hub.mph.in.gov/api/3/action/package_search?fq=tags:COVID&rows=50';
 
     public function pull()
     {

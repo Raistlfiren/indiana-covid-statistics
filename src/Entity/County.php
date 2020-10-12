@@ -40,7 +40,7 @@ class County
     private $covidCount;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidCountProb;
 
@@ -63,6 +63,11 @@ class County
      * @ORM\Column(type="integer")
      */
     private $population;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $fips;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Sex", mappedBy="county", cascade={"persist", "remove"})
@@ -570,6 +575,24 @@ class County
     public function setStatistics($statistics)
     {
         $this->statistics = $statistics;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFips()
+    {
+        return $this->fips;
+    }
+
+    /**
+     * @param mixed $fips
+     * @return County
+     */
+    public function setFips($fips)
+    {
+        $this->fips = $fips;
         return $this;
     }
 }

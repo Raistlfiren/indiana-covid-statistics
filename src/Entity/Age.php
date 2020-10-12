@@ -26,7 +26,7 @@ class Age
     private $age;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidCountProb;
 
@@ -36,7 +36,7 @@ class Age
     private $covidCount;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidDeathsProb;
 
@@ -46,7 +46,7 @@ class Age
     private $covidDeaths;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidTestProb;
 
@@ -56,17 +56,17 @@ class Age
     private $covidTest;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidTestPct;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidCountPct;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidDeathsPct;
 
