@@ -53,20 +53,25 @@ class PullDataCommand extends Command
         $data3 = $this->dataPuller->pullUniversal();
         $output->writeln('Data pulled');
         $output->writeln('Validating data');
+//        if ($this->dataPuller->isValidData($data)) {
+        $output->writeln('Data valid');
+        $output->writeln('Backing up data to file');
+        $this->dataPuller->backupData($data);
+        $this->dataPuller->backupLTC($data2);
+        $this->dataPuller->backupUniversal($data3);
+        $output->writeln('Data backed up to file');
+        $output->writeln('Refreshing database');
+
         if ($this->dataPuller->isValidData($data)) {
-            $output->writeln('Data valid');
-            $output->writeln('Backing up data to file');
-            $this->dataPuller->backupData($data);
-            $this->dataPuller->backupLTC($data2);
-            $this->dataPuller->backupUniversal($data3);
-            $output->writeln('Data backed up to file');
-            $output->writeln('Refreshing database');
             $this->dataPuller->refreshDatabase($data);
-            $output->writeln('Database refreshed');
-        } else {
-            $output->writeln('Data validation failed');
         }
+
+        $output->writeln('Database refreshed');
+//        } else {
+//            $output->writeln('Data validation failed');
+//        }
         $output->writeln('Process completed');
+        $this->dataPuller->updateDays();
 
         return 0;
     }

@@ -23,7 +23,7 @@ class Hospital
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @Groups({"display"})
      */
     private $bedsAllOccupiedBedsCovid;

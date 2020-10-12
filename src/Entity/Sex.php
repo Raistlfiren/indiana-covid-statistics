@@ -29,7 +29,7 @@ class Sex
     private $gender;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidCountProb;
 
@@ -40,7 +40,7 @@ class Sex
     private $covidCount;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidDeathsProb;
 
@@ -51,7 +51,7 @@ class Sex
     private $covidDeaths;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidTestProb;
 
@@ -62,17 +62,17 @@ class Sex
     private $covidTest;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidTestPct;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidCountPct;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $covidDeathsPct;
 

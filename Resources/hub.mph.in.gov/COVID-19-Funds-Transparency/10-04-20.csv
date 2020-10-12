@@ -1,0 +1,66 @@
+﻿_id,FUND SOURCE,DESCRIPTION,FEDERAL AWARDING AGENCY,BUSINESS UNIT,STATE AGENCY NAME,AWARD,EXPENSE,REMAINING
+1,9977,2020 Cooperative Agreement for Emergency Response: Public Health Crisis Response,US DEPT OF HEALTH & HUMANS SVS,400,IN State Department of Health,14842611.000,11615507.910,3227103.090
+2,9990,2020 TIII-Congregate Meals - Families First Coronavirus Response Act (P.L. 114-144) - Older Americans  Act,US DEPT OF HEALTH & HUMANS SVS,498,FSSA Div of Aging,1557609.000,1113761.180,443847.820
+3,9991,2020 TIII-Home Delivered Meals - Families First Coronavirus Response Act (P.L. 114-144) - Older Americans Act,US DEPT OF HEALTH & HUMANS SVS,498,FSSA Div of Aging,3115217.000,2279087.120,836129.880
+4,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,57,Budget Agency,300000000.000,50000000.000,250000000.000
+5,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,57,Budget Agency,1669139325.580,0.000,1669139325.580
+6,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,57,Budget Agency,2000000.000,0.000,2000000.000
+7,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,57,Budget Agency,25000000.000,25000000.000,0.000
+8,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,110,Adjutant General's Office,5448602.580,0.000,5448602.580
+9,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,260,IN Economic Development Corp,32175000.000,31089531.390,1085468.610
+10,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,260,IN Economic Development Corp,214680000.000,126337502.140,88342497.860
+11,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,385,IN Dept of Homeland Security,734507.740,734507.740,0.000
+12,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,400,IN State Department of Health,100000000.000,36938885.750,63061114.250
+13,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,410,FSSA Div of Mntl Hlth & Addict,9000000.000,0.000,9000000.000
+14,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,497,FSSA Disability & Rehab Svcs,23480000.000,6440979.470,17039020.530
+15,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,498,FSSA Div of Aging,2520000.000,899514.000,1620486.000
+16,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,510,Dept of Workforce Development,8000000.000,0.000,8000000.000
+17,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,510,Dept of Workforce Development,33000000.000,0.000,33000000.000
+18,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,512,Workforce Cabinet,8000000.000,0.000,8000000.000
+19,9995,2020 Coronavirus Relief Fund,US DEPT OF TREASURY,719,Comm for Higher Education,9000000.000,0.000,9000000.000
+20,10000,2020 Pandemic Unemployment Assistance Implementation Grants Admin Award received 06/25/20,US DEPT OF LABOR,510,Dept of Workforce Development,7340453.000,0.000,7340453.000
+21,10000,2020 Pandemic Unemployment Assistance Implementation Grants Admin Award received 06/25/20,US DEPT OF LABOR,510,Dept of Workforce Development,163970.000,7504423.000,-7340453.000
+22,10001,2020 Pandemic Unemployment Compensation Implementation Admin Grants Award received 06/10/20,US DEPT OF LABOR,510,Dept of Workforce Development,85813.000,10195.990,75617.010
+23,10003,2020 Federal Transit CARES Act,US DEPT OF TRANSPORTATION,800,IN Dept of Transportation,55504089.000,3107524.000,52396565.000
+24,10008,2020 Pandemic Emergency Unemployment Compensation Implementation Grants Award received 06/25/20,US DEPT OF LABOR,510,Dept of Workforce Development,117506.000,80818.330,36687.670
+25,10009,"2020 Families First Coronavirus Response Act, Division D Emergency Unemployment Insurance Stabilization and Access Act",US DEPT OF LABOR,510,Dept of Workforce Development,20538609.000,12101048.350,8437560.650
+26,10010,2020 Indiana COVID 19 Emergency Mental Health Services,US DEPT OF HEALTH & HUMANS SVS,400,IN State Department of Health,447177.680,0.000,447177.680
+27,10010,2020 Indiana COVID 19 Emergency Mental Health Services,US DEPT OF HEALTH & HUMANS SVS,410,FSSA Div of Mntl Hlth & Addict,1493593.320,162430.640,1331162.680
+28,10011,2020 CDBG-CV CARES ACT,US DEPT OF HOUSE & URBAN DEVEL,38,Lieutenant Governor's Office,18668114.000,4588443.120,14079670.880
+29,10012,2020 Promotion of the Arts_Partnership Agreements - CARES Amendment 2 (FS 009626) added for CARES ACT,US NAT ENDOWMENT FOR HUMANIT,705,IN Arts Commission,473900.000,438000.000,35900.000
+30,10013,2020 Child Nutrition GAD Number 2IN300059,US DEPT OF AGRICULTURE,718,Education School Nutrition,164142858.000,120912390.950,43230467.050
+31,10019,2020 Epidemiology and Laboratory Capacity for Prevention and Control of Emerging Infectious Diseases (ELC),US DEPT OF HEALTH & HUMANS SVS,400,IN State Department of Health,11527724.000,276960.190,11250763.810
+32,10020,2020 Ryan White HIV/AIDS Program Part B COVID19 Response,US DEPT OF HEALTH & HUMANS SVS,400,IN State Department of Health,234016.000,136523.380,97492.620
+33,10021,2020 HAVA CARES Act Grant,US ELECTION ASSISTANCE COMMI,40,Secretary of State,7980108.000,5213044.980,2767063.020
+34,10022,2020 National Dislocated Worker Grants Program Guidance WIA National Emergency Grants (NEGs),US DEPT OF LABOR,510,Dept of Workforce Development,1665000.000,26036.870,1638963.130
+35,10024,2020 Coronavirus State Hospital Improvement Program,US DEPT OF HEALTH & HUMANS SVS,400,IN State Department of Health,3204046.000,2529510.000,674536.000
+36,10025,2020 National Bioterrorism Hospital Preparedness Program - COVID Response Supplemental,US DEPT OF HEALTH & HUMANS SVS,385,IN Dept of Homeland Security,100000.000,0.000,100000.000
+37,10025,2020 National Bioterrorism Hospital Preparedness Program - COVID Response Supplemental,US DEPT OF HEALTH & HUMANS SVS,400,IN State Department of Health,2948931.000,73144.000,2875787.000
+38,10026,2020 (BJA - CESF) Coronavirus Emergency Supplemental Funding Program,US DEPT OF JUSTICE,32,Criminal Justice Institute,8590030.000,57855.680,8532174.320
+39,10026,2020 (BJA - CESF) Coronavirus Emergency Supplemental Funding Program,US DEPT OF JUSTICE,615,Dept of Correction,2500000.000,245036.780,2254963.220
+40,10027,2020 Small Business Development Centers CARES Act,US SMALL BUSINESS ADMIN,260,IN Economic Development Corp,2769817.500,24799.580,2745017.920
+41,10027,2020 Small Business Development Centers CARES Act,US SMALL BUSINESS ADMIN,260,IN Economic Development Corp,923272.500,0.000,923272.500
+42,10028,2020 TIII-B - Supportive Services - CARES Act (P.L. 116-131) - Older Americans  Act,US DEPT OF HEALTH & HUMANS SVS,498,FSSA Div of Aging,3894022.000,2097988.810,1796033.190
+43,10029,2020 TIII-C2 - Nutrition Services - CARES Act (P.L. 116-131) - Older Americans Act,US DEPT OF HEALTH & HUMANS SVS,498,FSSA Div of Aging,9345652.000,3930289.320,5415362.680
+44,10030,2020 TIII-E - Family Caregiver - CARES Act (P.L. 116-131) - Older Americans Act,US DEPT OF HEALTH & HUMANS SVS,498,FSSA Div of Aging,1907350.000,600039.160,1307310.840
+45,10031,2020 TVII - Ombudsman - CARES Act (P.L. 116-131) - Older Americans Act,US DEPT OF HEALTH & HUMANS SVS,498,FSSA Div of Aging,389402.000,0.000,389402.000
+46,10033,2020 The Emergency Food Assistance Program (TEFAP):  Allocation of CARES Act Supplemental Appropriation,US DEPT OF AGRICULTURE,400,IN State Department of Health,1943365.000,439657.050,1503707.950
+47,10034,2020 Elementary and Secondary School Emergency Relief Fund,US DEPARTMENT OF EDUCATION,700,Dept of Education,214472770.000,13791699.130,200681070.870
+48,10035,2020 Library Services and Technology Act CARES Act State Grant,US INST OF MUSEUM & LIBRY SVS,730,IN State Library,102313.000,0.000,102313.000
+49,10035,2020 Library Services and Technology Act CARES Act State Grant,US INST OF MUSEUM & LIBRY SVS,730,IN State Library,110000.000,0.000,110000.000
+50,10035,2020 Library Services and Technology Act CARES Act State Grant,US INST OF MUSEUM & LIBRY SVS,730,IN State Library,396000.000,0.000,396000.000
+51,10044,2020 Epidemiology and Laboratory Capacity for Prevention and Control of Emerging Infectious Diseases (ELC),US DEPT OF HEALTH & HUMANS SVS,400,IN State Department of Health,183065473.000,1045326.350,182020146.650
+52,10048,2020 Public Assistance-Management Costs FEMA,US FED EMERGENCY MGMT AGENCY,385,IN Dept of Homeland Security,694415.200,75787.230,618627.970
+53,10071,2020 Crisis Counseling Immediate Services Program,US FED EMERGENCY MGMT AGENCY,410,FSSA Div of Mntl Hlth & Addict,986244.000,426053.300,560190.700
+54,10073,2020 Child Care and Development Block Grant,US DEPT OF HEALTH & HUMANS SVS,501,FSSA Early Child Learning,78821955.000,62330293.450,16491661.550
+55,10079,2020 Family Violence Prevention and Services/Grants for Battered Women's Shelters_Grants to States and Indian Tribes - (The CARES Act 2020),US DEPT OF HEALTH & HUMANS SVS,32,Criminal Justice Institute,702901.000,3403.440,699497.560
+56,10081,2020 COVID19-Rape Prevention and Education: Using the Best Available Evidence,US DEPT OF HEALTH & HUMANS SVS,400,IN State Department of Health,71073.000,0.000,71073.000
+57,10085,2020 WIOA National Dislocated Worker Grants / WIA National Emergency Grants (NEGs),US DEPT OF LABOR,510,Dept of Workforce Development,6660000.000,0.000,6660000.000
+58,10099,Indiana 2020 ADRC No Wrong Door COVID-19 Relief,US DEPT OF HEALTH & HUMANS SVS,498,FSSA Div of Aging,1105454.000,730.390,1104723.610
+59,10138,2020 Governors Emergency Education Relief Fund,US DEPARTMENT OF EDUCATION,57,Budget Agency,0.000,0.000,0.000
+60,10138,2020 Governors Emergency Education Relief Fund,US DEPARTMENT OF EDUCATION,700,Dept of Education,61590954.000,0.000,61590954.000
+61,10139,2020 Epidemiology and Laboratory Capacity for Prevention and Control of Emerging Infectious Diseases (ELC) E. Cross-Cutting Emerging Issues,US DEPT OF HEALTH & HUMANS SVS,400,IN State Department of Health,1694239.000,896.110,1693342.890
+62,10160,2020 COVID Immunization and Vaccines for Children PPPHEA,US DEPT OF HEALTH & HUMANS SVS,400,IN State Department of Health,2317387.000,473.000,2316914.000
+63,10214,FEMA LWA. *No APPROP or Cash entries. Project 51099FEDERALLWA,US DEPT OF HOMELAND SECURITY,510,Dept of Workforce Development,388169376.000,0.000,388169376.000
+64,10215,2020 Lost Wages Assistance Program to Provide Needed Relief to Americans,US DEPT OF HOMELAND SECURITY,510,Dept of Workforce Development,352824.000,0.000,352824.000
+65,10218,2020 RSP - Crisis Counseling Assistance and Training Program,US DEPT OF HEALTH & HUMANS SVS,410,FSSA Div of Mntl Hlth & Addict,3862696.000,0.000,3862696.000

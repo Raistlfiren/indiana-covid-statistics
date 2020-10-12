@@ -43,7 +43,7 @@ class County
     private $covidCount;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @Groups({"display"})
      */
     private $covidCountProb;
@@ -71,6 +71,11 @@ class County
      * @Groups({"display"})
      */
     private $population;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $fips;
 
     /**
      * @var \DateTime
@@ -641,6 +646,24 @@ class County
     public function setStatistics($statistics)
     {
         $this->statistics = $statistics;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFips()
+    {
+        return $this->fips;
+    }
+
+    /**
+     * @param mixed $fips
+     * @return County
+     */
+    public function setFips($fips)
+    {
+        $this->fips = $fips;
         return $this;
     }
 }
