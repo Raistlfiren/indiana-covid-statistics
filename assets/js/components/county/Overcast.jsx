@@ -51,7 +51,7 @@ class Header extends React.Component {
                     and <strong>{mostRecentDeathsSMA}</strong> deaths per day. Based upon yesterday's data, { county.name } counties
                     cases are {this.textChange(mostRecentCasesSMA, this.getSecondLastItemInArray(dailyCovidCountSMA))} and
                     deaths are {this.textChange(mostRecentDeathsSMA, this.getSecondLastItemInArray(dailyCovidDeathsSMA))}.
-                    The estimated population of {county.name} county is {county.population.toLocaleString()}. Our current "herd immunity" outlook is
+                    The estimated population of {county.name} county is {county.population.toLocaleString()}. Our current "herd immunity" outlook is&nbsp;
                      <strong>{this.getHerdImmunityPercentage()}%</strong>.
                 </p>
             </div>

@@ -5,19 +5,11 @@ import {TrendingUp, TrendingDown} from "react-feather";
 import NewTestsSparkline from "./NewTestsSparkline";
 import NewDeathsSparkline from "./NewDeathsSparkline";
 
-const DEFAULT_STATISTICS = {
-    id: null,
-    newCaseDay: null,
-    newTestDay: null,
-    newDeathDay: null
-}
-
 class SparklineCharts extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            statistics: DEFAULT_STATISTICS,
             chartOptions: {
                 chart: {
                     type: "line",
@@ -54,22 +46,6 @@ class SparklineCharts extends React.Component {
                 }
             }
         }
-    }
-
-    componentDidMount() {
-        this.getStatistics(this.props.countyName);
-    }
-
-    getStatistics(countyName) {
-        axios.get('http://localhost/api/county/' + countyName + '/statistics')
-            .then(result => this.setState({
-                statistics: result.data,
-                isLoading: false
-            }))
-            .catch(error => this.setState({
-                error,
-                isLoading: false
-            }));
     }
 
     chartChangeIndicator(x, y)
@@ -117,6 +93,11 @@ class SparklineCharts extends React.Component {
         return data.slice(-2)[0]
     }
 
+    getToday(data)
+    {
+        return data.slice(-1)[0]
+    }
+
     render() {
         if (this.props.isLoading) {
             return <div>Loading</div>
@@ -130,7 +111,7 @@ class SparklineCharts extends React.Component {
                             dailyDates={this.props.dailyDates}
                             dailyCovidCases={this.props.dailyCovidCases}
                             chartOptions={this.state.chartOptions}
-                            statistics={this.state.statistics}
+                            today={this.getToday}
                             currentActivityData={this.currentActivityData}
                             previousDay={this.getPreviousDay}
                             county={this.props.county}
@@ -141,7 +122,7 @@ class SparklineCharts extends React.Component {
                             dailyDates={this.props.dailyDates}
                             dailyCovidTests={this.props.dailyCovidTests}
                             chartOptions={this.state.chartOptions}
-                            statistics={this.state.statistics}
+                            today={this.getToday}
                             currentActivityData={this.currentActivityData}
                             previousDay={this.getPreviousDay}
                             county={this.props.county}
@@ -152,7 +133,7 @@ class SparklineCharts extends React.Component {
                             dailyDates={this.props.dailyDates}
                             dailyCovidDeaths={this.props.dailyCovidDeaths}
                             chartOptions={this.state.chartOptions}
-                            statistics={this.state.statistics}
+                            today={this.getToday}
                             currentActivityData={this.currentActivityData}
                             previousDay={this.getPreviousDay}
                             county={this.props.county}

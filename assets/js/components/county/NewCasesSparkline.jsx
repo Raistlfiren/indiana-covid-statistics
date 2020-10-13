@@ -36,7 +36,7 @@ class NewCasesSparkline extends React.Component {
                         </div>
                         <div className="row">
                             <div className="col-6 col-md-12 col-xl-5">
-                                {this.props.currentActivityData(this.props.statistics.newCaseDay, this.props.previousDay(this.props.dailyCovidCases), 'cases', this.props.county.covidCount)}
+                                {this.props.currentActivityData(this.props.today(this.props.dailyCovidCases), this.props.previousDay(this.props.dailyCovidCases), 'cases', this.props.county.covidCount)}
                             </div>
                             <div className="col-6 col-md-12 col-xl-7">
                                 <h6 className="text-center">Past 7 Days</h6>
