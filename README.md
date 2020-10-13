@@ -47,9 +47,21 @@ Running `./bin/console app:pull-data` will do the following:
 ## Using the project with Docker
 ##  docker-compose run encore yarn add axios --dev
 ###
-1) `docker-compose up`
+1) `docker-compose up` - `docker-compose build` to rebuild configurations
 2) yarn install - copy over assets `docker-compose run encore yarn run watch`
 3) composer install `docker-compose run composer`
+4) (You can run the pull command by typing in `docker-compose exec php bin/console app:pull-data`)
+
+###
+## Debugging APPS
+###
+1) Configure docker/php/xdebug.ini with the proper IP of your local computer for debugging PHP routes from the server
+2) Configure docker-compose.yaml's environment variable of `PHP_IDE_CONFIG` for debugging console commands
+3) Configure PHPStorm to PHP -> Servers:
+    - Name of server should be the value of ServerName from `PHP_IDE_CONFIG`
+    - Host should be _
+    - Port should be 80 for NGINX
+    - Configure Path Mappings Project files to `/var/www/html`
 
 Removing and stopping all docker containers:
 docker stop $(docker ps -a -q)
