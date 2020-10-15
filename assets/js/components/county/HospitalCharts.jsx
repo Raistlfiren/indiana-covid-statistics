@@ -50,6 +50,12 @@ class HospitalCharts extends React.Component {
         this.getHospitalStatistics(this.props.countyName);
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.countyName !== this.props.countyName) {
+            this.getHospitalStatistics(this.props.countyName);
+        }
+    }
+
     getHospitalStatistics(countyName) {
         axios.get('http://localhost/api/county/' + countyName + '/hospital')
             .then(result => this.setState({

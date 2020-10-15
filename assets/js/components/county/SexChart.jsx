@@ -18,6 +18,12 @@ class SexChart extends React.Component {
         this.getSexDetails(this.props.countyName);
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.countyName !== this.props.countyName) {
+            this.getSexDetails(this.props.countyName);
+        }
+    }
+
     getSexDetails(countyName) {
         axios.get('http://localhost/api/county/' + countyName + '/sex')
             .then(result => this.setState({

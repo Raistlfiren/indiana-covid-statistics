@@ -18,6 +18,12 @@ class AgeChart extends React.Component {
         this.getAgeDetails(this.props.countyName);
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.countyName !== this.props.countyName) {
+            this.getAgeDetails(this.props.countyName);
+        }
+    }
+
     getAgeDetails(countyName) {
         axios.get('http://localhost/api/county/' + countyName + '/age')
             .then(result => this.setState({

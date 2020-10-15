@@ -14,6 +14,7 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import BigCharts from "./BigCharts";
 import BarCharts from "./BarCharts";
+import { withRouter } from "react-router-dom";
 
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -195,6 +196,8 @@ class Dashboard extends React.Component {
         this.getCounty(event.target.value);
         this.getDays(event.target.value);
         this.updatePageTitle(event.target.value);
+        this.state.countyName = event.target.value;
+        this.props.history.push(`/county/${event.target.value}`);
     }
 
     render() {
@@ -226,6 +229,7 @@ class Dashboard extends React.Component {
                                  percentageChange={this.percentageChange}
                 />
                 <HospitalCharts
+                    key={countyName}
                     countyName={countyName}
                 />
                 <WeeklySumCharts
@@ -251,4 +255,4 @@ class Dashboard extends React.Component {
     }
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);

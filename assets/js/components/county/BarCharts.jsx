@@ -52,14 +52,14 @@ class BarCharts extends React.Component {
                     countyName={this.props.countyName}
                     chartOptions={this.state.chartOptions}
                 />
-                <RaceChart
-                    countyName={this.props.countyName}
-                    chartOptions={this.state.chartOptions}
-                />
-                <EthnicityChart
-                    countyName={this.props.countyName}
-                    chartOptions={this.state.chartOptions}
-                />
+                {/*<RaceChart*/}
+                {/*    countyName={this.props.countyName}*/}
+                {/*    chartOptions={this.state.chartOptions}*/}
+                {/*/>*/}
+                {/*<EthnicityChart*/}
+                {/*    countyName={this.props.countyName}*/}
+                {/*    chartOptions={this.state.chartOptions}*/}
+                {/*/>*/}
             </div>
         );
     }
