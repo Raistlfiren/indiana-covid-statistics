@@ -70,8 +70,12 @@ class PullDataCommand extends Command
 //        } else {
 //            $output->writeln('Data validation failed');
 //        }
+        $this->dataPuller->updateHospitalData();
+
         $output->writeln('Process completed');
-        $this->dataPuller->updateDays();
+        //        $this->dataPuller->updateHospitalData();
+
+//        $this->dataPuller->updateDays();
 
         return 0;
     }

@@ -41,7 +41,8 @@ class HospitalCharts extends React.Component {
                 },
                 dataLabels: {
                     enabled: true
-                }
+                },
+                labels: ['Covid Use', 'Non-Covid Use', 'Available']
             }
         }
     }

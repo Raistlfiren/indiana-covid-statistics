@@ -18,12 +18,11 @@ class VentChart extends React.Component {
                 text: [stats.ventsTotal, 'Total'],
                 align: 'center',
                 floating: true,
-                offsetY: 90,
+                offsetY: 100,
                 style: {
                     fontSize: '20px'
                 }
-            },
-            labels: ['Covid Use', 'Non-Covid Use', 'Available']
+            }
         }
 
         return (

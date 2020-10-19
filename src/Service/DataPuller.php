@@ -131,7 +131,7 @@ class DataPuller
     public function updateHospitalData()
     {
         $this->deleteOldData();
-        $date = (new \DateTime())->modify('-1 days');
+        $date = new \DateTime();
         $filePath = __DIR__ . '/../../Resources/coronavirus.in.gov/covid-universal-';
         $data = json_decode(file_get_contents($filePath . $date->format('m-d-y') . '.topojson'));
         $dates = $data->metrics->data->date;
