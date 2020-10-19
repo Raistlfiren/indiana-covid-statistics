@@ -21,6 +21,7 @@ class DataPuller
     const URL1 = 'https://www.coronavirus.in.gov/map/covid-19-indiana-ltc-report-current-public.json';
     const URL2 = 'https://www.coronavirus.in.gov/map/covid-19-indiana-universal-report-current-public.json';
     const URL3 = 'https://www.coronavirus.in.gov/map/ltc.json';
+    const URL4 = 'https://www.coronavirus.in.gov/map/covid-19-indiana-school-report.json';
 
     /**
      * @var EntityManagerInterface
@@ -56,6 +57,11 @@ class DataPuller
         return file_get_contents(self::URL3);
     }
 
+    public function pullSchool()
+    {
+        return file_get_contents(self::URL4);
+    }
+
     public function backupData($data)
     {
         $filePath = __DIR__ . '/../../Resources/coronavirus.in.gov/' . $this->generateFileName('public-');
@@ -73,6 +79,13 @@ class DataPuller
     public function backupLTC($data)
     {
         $filePath = __DIR__ . '/../../Resources/coronavirus.in.gov/' . $this->generateFileName('ltc-');
+
+        file_put_contents($filePath, $data);
+    }
+
+    public function backupSchool($data)
+    {
+        $filePath = __DIR__ . '/../../Resources/coronavirus.in.gov/' . $this->generateFileName('school-');
 
         file_put_contents($filePath, $data);
     }
