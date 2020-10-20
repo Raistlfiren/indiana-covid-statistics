@@ -51,7 +51,7 @@ class PullDataCommand extends Command
         $data = $this->dataPuller->pull();
         $data2 = $this->dataPuller->pullLTC();
         $data3 = $this->dataPuller->pullUniversal();
-        $data3 = $this->dataPuller->pullSchool();
+        $data4 = $this->dataPuller->pullSchool();
         $output->writeln('Data pulled');
         $output->writeln('Validating data');
 //        if ($this->dataPuller->isValidData($data)) {
@@ -60,7 +60,7 @@ class PullDataCommand extends Command
         $this->dataPuller->backupData($data);
         $this->dataPuller->backupLTC($data2);
         $this->dataPuller->backupUniversal($data3);
-        $this->dataPuller->backupSchool($data3);
+        $this->dataPuller->backupSchool($data4);
         $output->writeln('Data backed up to file');
         $output->writeln('Refreshing database');
 
