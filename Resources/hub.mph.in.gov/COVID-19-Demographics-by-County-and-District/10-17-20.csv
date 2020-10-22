@@ -1,0 +1,307 @@
+﻿_id,location_level,location_id,ethnicity,covid_test,covid_count,covid_deaths,covid_test_pct,covid_count_pct,covid_deaths_pct,county_name
+1,c,18001,Hispanic or Latino,217,36,Suppressed,4.05,8.02,Suppressed,Adams
+2,c,18001,Not Hispanic or Latino,3681,303,Suppressed,68.65,67.48,Suppressed,Adams
+3,c,18001,Unknown,1464,110,Suppressed,27.3,24.5,Suppressed,Adams
+4,c,18003,Hispanic or Latino,3215,677,9,4.27,8.83,4.09,Allen
+5,c,18003,Not Hispanic or Latino,42091,4076,126,55.87,53.16,57.27,Allen
+6,c,18003,Unknown,30033,2914,85,39.86,38.01,38.64,Allen
+7,c,18005,Hispanic or Latino,551,126,0,2.92,9.24,0.0,Bartholomew
+8,c,18005,Not Hispanic or Latino,6021,441,16,31.89,32.36,28.07,Bartholomew
+9,c,18005,Unknown,12308,796,41,65.19,58.4,71.93,Bartholomew
+10,c,18007,Hispanic or Latino,157,44,Suppressed,7.91,41.9,Suppressed,Benton
+11,c,18007,Not Hispanic or Latino,1272,49,Suppressed,64.08,46.67,Suppressed,Benton
+12,c,18007,Unknown,556,12,Suppressed,28.01,11.43,Suppressed,Benton
+13,c,18009,Hispanic or Latino,24,8,Suppressed,0.99,4.44,Suppressed,Blackford
+14,c,18009,Not Hispanic or Latino,1846,121,Suppressed,76.0,67.22,Suppressed,Blackford
+15,c,18009,Unknown,559,51,Suppressed,23.01,28.33,Suppressed,Blackford
+16,c,18011,Hispanic or Latino,176,18,0,1.14,1.54,0.0,Boone
+17,c,18011,Not Hispanic or Latino,6222,428,18,40.21,36.55,37.5,Boone
+18,c,18011,Unknown,9076,725,30,58.65,61.91,62.5,Boone
+19,c,18013,Hispanic or Latino,27,1,Suppressed,1.25,0.79,Suppressed,Brown
+20,c,18013,Not Hispanic or Latino,1453,75,Suppressed,67.46,59.06,Suppressed,Brown
+21,c,18013,Unknown,674,51,Suppressed,31.29,40.16,Suppressed,Brown
+22,c,18015,Hispanic or Latino,113,31,0,2.96,10.16,0.0,Carroll
+23,c,18015,Not Hispanic or Latino,2270,148,5,59.52,48.52,38.46,Carroll
+24,c,18015,Unknown,1431,126,8,37.52,41.31,61.54,Carroll
+25,c,18017,Hispanic or Latino,1625,964,3,15.3,43.88,15.0,Cass
+26,c,18017,Not Hispanic or Latino,4049,610,5,38.13,27.77,25.0,Cass
+27,c,18017,Unknown,4945,623,12,46.57,28.36,60.0,Cass
+28,c,18019,Hispanic or Latino,1092,254,2,4.15,9.1,3.51,Clark
+29,c,18019,Not Hispanic or Latino,12400,1370,36,47.08,49.09,63.16,Clark
+30,c,18019,Unknown,12847,1167,19,48.78,41.81,33.33,Clark
+31,c,18021,Hispanic or Latino,19,0,Suppressed,0.37,0.0,Suppressed,Clay
+32,c,18021,Not Hispanic or Latino,1926,188,Suppressed,37.25,45.08,Suppressed,Clay
+33,c,18021,Unknown,3226,229,Suppressed,62.39,54.92,Suppressed,Clay
+34,c,18023,Hispanic or Latino,1436,241,0,15.11,30.24,0.0,Clinton
+35,c,18023,Not Hispanic or Latino,5971,415,15,62.83,52.07,100.0,Clinton
+36,c,18023,Unknown,2096,141,0,22.06,17.69,0.0,Clinton
+37,c,18025,Hispanic or Latino,13,2,Suppressed,0.65,1.43,Suppressed,Crawford
+38,c,18025,Not Hispanic or Latino,1238,90,Suppressed,61.53,64.29,Suppressed,Crawford
+39,c,18025,Unknown,761,48,Suppressed,37.82,34.29,Suppressed,Crawford
+40,c,18027,Hispanic or Latino,62,18,0,1.05,2.21,0.0,Daviess
+41,c,18027,Not Hispanic or Latino,1190,214,13,20.13,26.32,40.62,Daviess
+42,c,18027,Unknown,4659,581,19,78.82,71.46,59.38,Daviess
+43,c,18029,Hispanic or Latino,84,6,0,0.83,0.67,0.0,Dearborn
+44,c,18029,Not Hispanic or Latino,4814,499,20,47.45,56.07,71.43,Dearborn
+45,c,18029,Unknown,5248,385,8,51.72,43.26,28.57,Dearborn
+46,c,18031,Hispanic or Latino,54,7,0,0.97,1.42,0.0,Decatur
+47,c,18031,Not Hispanic or Latino,3762,300,23,67.77,60.85,58.97,Decatur
+48,c,18031,Unknown,1735,186,16,31.26,37.73,41.03,Decatur
+49,c,18033,Hispanic or Latino,161,20,0,2.33,3.03,0.0,De Kalb
+50,c,18033,Not Hispanic or Latino,5341,495,6,77.34,74.89,54.55,De Kalb
+51,c,18033,Unknown,1404,146,5,20.33,22.09,45.45,De Kalb
+52,c,18035,Hispanic or Latino,309,36,0,1.23,1.32,0.0,Delaware
+53,c,18035,Not Hispanic or Latino,15623,1562,54,62.37,57.45,72.97,Delaware
+54,c,18035,Unknown,9116,1121,20,36.39,41.23,27.03,Delaware
+55,c,18037,Hispanic or Latino,885,274,3,9.46,20.73,14.29,Dubois
+56,c,18037,Not Hispanic or Latino,5149,802,5,55.03,60.67,23.81,Dubois
+57,c,18037,Unknown,3323,246,13,35.51,18.61,61.9,Dubois
+58,c,18039,Hispanic or Latino,4916,1590,11,8.65,19.5,8.53,Elkhart
+59,c,18039,Not Hispanic or Latino,15102,1955,50,26.56,23.97,38.76,Elkhart
+60,c,18039,Unknown,36841,4610,68,64.79,56.53,52.71,Elkhart
+61,c,18041,Hispanic or Latino,19,2,0,0.36,0.37,0.0,Fayette
+62,c,18041,Not Hispanic or Latino,2465,322,6,47.24,58.87,40.0,Fayette
+63,c,18041,Unknown,2734,223,9,52.4,40.77,60.0,Fayette
+64,c,18043,Hispanic or Latino,291,54,0,1.7,3.18,0.0,Floyd
+65,c,18043,Not Hispanic or Latino,7963,823,39,46.49,48.53,60.0,Floyd
+66,c,18043,Unknown,8874,819,26,51.81,48.29,40.0,Floyd
+67,c,18045,Hispanic or Latino,40,5,Suppressed,1.21,1.85,Suppressed,Fountain
+68,c,18045,Not Hispanic or Latino,1683,147,Suppressed,50.92,54.44,Suppressed,Fountain
+69,c,18045,Unknown,1582,118,Suppressed,47.87,43.7,Suppressed,Fountain
+70,c,18047,Hispanic or Latino,7,2,1,0.25,0.56,4.0,Franklin
+71,c,18047,Not Hispanic or Latino,1498,209,10,53.56,58.38,40.0,Franklin
+72,c,18047,Unknown,1292,147,14,46.19,41.06,56.0,Franklin
+73,c,18049,Hispanic or Latino,141,34,Suppressed,3.52,10.53,Suppressed,Fulton
+74,c,18049,Not Hispanic or Latino,1899,174,Suppressed,47.44,53.87,Suppressed,Fulton
+75,c,18049,Unknown,1963,115,Suppressed,49.04,35.6,Suppressed,Fulton
+76,c,18051,Hispanic or Latino,78,11,Suppressed,1.21,1.36,Suppressed,Gibson
+77,c,18051,Not Hispanic or Latino,2504,183,Suppressed,38.96,22.59,Suppressed,Gibson
+78,c,18051,Unknown,3845,616,Suppressed,59.83,76.05,Suppressed,Gibson
+79,c,18053,Hispanic or Latino,411,47,0,2.86,4.07,0.0,Grant
+80,c,18053,Not Hispanic or Latino,7690,708,22,53.5,61.35,56.41,Grant
+81,c,18053,Unknown,6272,399,17,43.64,34.58,43.59,Grant
+82,c,18055,Hispanic or Latino,50,8,0,0.77,1.6,0.0,Greene
+83,c,18055,Not Hispanic or Latino,3923,317,29,60.6,63.53,78.38,Greene
+84,c,18055,Unknown,2501,174,8,38.63,34.87,21.62,Greene
+85,c,18057,Hispanic or Latino,1321,161,1,1.57,2.77,0.89,Hamilton
+86,c,18057,Not Hispanic or Latino,29575,2207,67,35.21,37.91,59.82,Hamilton
+87,c,18057,Unknown,53105,3454,44,63.22,59.33,39.29,Hamilton
+88,c,18059,Hispanic or Latino,125,20,0,0.68,1.8,0.0,Hancock
+89,c,18059,Not Hispanic or Latino,5925,424,22,32.38,38.13,50.0,Hancock
+90,c,18059,Unknown,12246,668,22,66.93,60.07,50.0,Hancock
+91,c,18061,Hispanic or Latino,142,22,0,1.72,3.03,0.0,Harrison
+92,c,18061,Not Hispanic or Latino,5633,478,19,68.15,65.75,79.17,Harrison
+93,c,18061,Unknown,2491,227,5,30.14,31.22,20.83,Harrison
+94,c,18063,Hispanic or Latino,586,91,0,1.74,2.94,0.0,Hendricks
+95,c,18063,Not Hispanic or Latino,17493,1477,73,51.95,47.75,56.59,Hendricks
+96,c,18063,Unknown,15591,1525,56,46.31,49.3,43.41,Hendricks
+97,c,18065,Hispanic or Latino,79,26,0,0.75,2.2,0.0,Henry
+98,c,18065,Not Hispanic or Latino,4165,502,18,39.6,42.4,64.29,Henry
+99,c,18065,Unknown,6275,656,10,59.65,55.41,35.71,Henry
+100,c,18067,Hispanic or Latino,429,42,0,2.29,2.71,0.0,Howard
+101,c,18067,Not Hispanic or Latino,9566,769,18,51.04,49.68,27.27,Howard
+102,c,18067,Unknown,8748,737,48,46.67,47.61,72.73,Howard
+103,c,18069,Hispanic or Latino,118,14,Suppressed,1.55,3.9,Suppressed,Huntington
+104,c,18069,Not Hispanic or Latino,5924,262,Suppressed,77.78,72.98,Suppressed,Huntington
+105,c,18069,Unknown,1574,83,Suppressed,20.67,23.12,Suppressed,Huntington
+106,c,18071,Hispanic or Latino,544,235,1,6.26,22.51,8.33,Jackson
+107,c,18071,Not Hispanic or Latino,3698,479,6,42.53,45.88,50.0,Jackson
+108,c,18071,Unknown,4454,330,5,51.22,31.61,41.67,Jackson
+109,c,18073,Hispanic or Latino,199,34,Suppressed,2.91,6.54,Suppressed,Jasper
+110,c,18073,Not Hispanic or Latino,3350,265,Suppressed,48.99,50.96,Suppressed,Jasper
+111,c,18073,Unknown,3289,221,Suppressed,48.1,42.5,Suppressed,Jasper
+112,c,18075,Hispanic or Latino,65,20,Suppressed,2.08,7.35,Suppressed,Jay
+113,c,18075,Not Hispanic or Latino,2351,162,Suppressed,75.09,59.56,Suppressed,Jay
+114,c,18075,Unknown,715,90,Suppressed,22.84,33.09,Suppressed,Jay
+115,c,18077,Hispanic or Latino,95,3,Suppressed,1.5,0.92,Suppressed,Jefferson
+116,c,18077,Not Hispanic or Latino,2673,184,Suppressed,42.33,56.62,Suppressed,Jefferson
+117,c,18077,Unknown,3547,138,Suppressed,56.17,42.46,Suppressed,Jefferson
+118,c,18079,Hispanic or Latino,56,13,0,1.3,3.65,0.0,Jennings
+119,c,18079,Not Hispanic or Latino,1342,153,5,31.18,42.98,38.46,Jennings
+120,c,18079,Unknown,2906,190,8,67.52,53.37,61.54,Jennings
+121,c,18081,Hispanic or Latino,577,61,0,1.67,2.09,0.0,Johnson
+122,c,18081,Not Hispanic or Latino,17979,1481,78,52.13,50.74,61.42,Johnson
+123,c,18081,Unknown,15931,1377,49,46.19,47.17,38.58,Johnson
+124,c,18083,Hispanic or Latino,45,13,0,0.7,1.92,0.0,Knox
+125,c,18083,Not Hispanic or Latino,1783,326,7,27.91,48.08,70.0,Knox
+126,c,18083,Unknown,4561,339,3,71.39,50.0,30.0,Knox
+127,c,18085,Hispanic or Latino,682,150,1,4.4,8.98,4.76,Kosciusko
+128,c,18085,Not Hispanic or Latino,7054,744,8,45.49,44.55,38.1,Kosciusko
+129,c,18085,Unknown,7772,776,12,50.12,46.47,57.14,Kosciusko
+130,c,18087,Hispanic or Latino,145,30,2,3.55,3.96,14.29,Lagrange
+131,c,18087,Not Hispanic or Latino,2420,428,11,59.21,56.46,78.57,Lagrange
+132,c,18087,Unknown,1522,300,1,37.24,39.58,7.14,Lagrange
+133,c,18089,Hispanic or Latino,9278,1834,22,8.4,14.4,6.32,Lake
+134,c,18089,Not Hispanic or Latino,31460,3455,119,28.5,27.12,34.2,Lake
+135,c,18089,Unknown,69660,7450,207,63.1,58.48,59.48,Lake
+136,c,18091,Hispanic or Latino,1151,165,3,4.48,7.97,5.77,La Porte
+137,c,18091,Not Hispanic or Latino,15804,1162,22,61.58,56.16,42.31,La Porte
+138,c,18091,Unknown,8711,742,27,33.94,35.86,51.92,La Porte
+139,c,18093,Hispanic or Latino,59,5,0,0.75,0.68,0.0,Lawrence
+140,c,18093,Not Hispanic or Latino,5408,483,26,68.81,65.36,81.25,Lawrence
+141,c,18093,Unknown,2392,251,6,30.44,33.96,18.75,Lawrence
+142,c,18095,Hispanic or Latino,461,69,4,1.9,3.12,4.6,Madison
+143,c,18095,Not Hispanic or Latino,9853,1081,51,40.58,48.83,58.62,Madison
+144,c,18095,Unknown,13969,1064,32,57.53,48.06,36.78,Madison
+145,c,18097,Hispanic or Latino,8398,2184,19,3.62,8.99,2.44,Marion
+146,c,18097,Not Hispanic or Latino,83442,7609,398,35.95,31.33,51.03,Marion
+147,c,18097,Unknown,140268,14497,363,60.43,59.68,46.54,Marion
+148,c,18099,Hispanic or Latino,778,172,0,5.98,13.42,0.0,Marshall
+149,c,18099,Not Hispanic or Latino,4399,316,3,33.82,24.65,11.54,Marshall
+150,c,18099,Unknown,7831,794,23,60.2,61.93,88.46,Marshall
+151,c,18101,Hispanic or Latino,6,0,Suppressed,0.33,0.0,Suppressed,Martin
+152,c,18101,Not Hispanic or Latino,937,122,Suppressed,51.83,63.87,Suppressed,Martin
+153,c,18101,Unknown,865,69,Suppressed,47.84,36.13,Suppressed,Martin
+154,c,18103,Hispanic or Latino,136,28,Suppressed,1.72,5.02,Suppressed,Miami
+155,c,18103,Not Hispanic or Latino,4208,276,Suppressed,53.31,49.46,Suppressed,Miami
+156,c,18103,Unknown,3549,254,Suppressed,44.96,45.52,Suppressed,Miami
+157,c,18105,Hispanic or Latino,1327,130,1,2.66,4.14,2.63,Monroe
+158,c,18105,Not Hispanic or Latino,25185,1463,21,50.46,46.59,55.26,Monroe
+159,c,18105,Unknown,23398,1547,16,46.88,49.27,42.11,Monroe
+160,c,18107,Hispanic or Latino,235,62,0,3.0,11.17,0.0,Montgomery
+161,c,18107,Not Hispanic or Latino,2439,250,5,31.19,45.05,22.73,Montgomery
+162,c,18107,Unknown,5147,243,17,65.81,43.78,77.27,Montgomery
+163,c,18109,Hispanic or Latino,90,7,0,0.72,0.78,0.0,Morgan
+164,c,18109,Not Hispanic or Latino,8042,554,26,64.7,61.49,65.0,Morgan
+165,c,18109,Unknown,4298,340,14,34.58,37.74,35.0,Morgan
+166,c,18111,Hispanic or Latino,54,11,0,2.7,5.42,0.0,Newton
+167,c,18111,Not Hispanic or Latino,930,124,7,46.52,61.08,63.64,Newton
+168,c,18111,Unknown,1015,68,4,50.78,33.5,36.36,Newton
+169,c,18113,Hispanic or Latino,784,198,0,7.67,18.18,0.0,Noble
+170,c,18113,Not Hispanic or Latino,7044,656,28,68.95,60.24,84.85,Noble
+171,c,18113,Unknown,2388,235,5,23.38,21.58,15.15,Noble
+172,c,18115,Hispanic or Latino,7,0,Suppressed,0.54,0.0,Suppressed,Ohio
+173,c,18115,Not Hispanic or Latino,747,62,Suppressed,57.11,54.39,Suppressed,Ohio
+174,c,18115,Unknown,554,52,Suppressed,42.35,45.61,Suppressed,Ohio
+175,c,18117,Hispanic or Latino,20,1,0,0.53,0.27,0.0,Orange
+176,c,18117,Not Hispanic or Latino,2156,226,21,57.55,60.92,87.5,Orange
+177,c,18117,Unknown,1570,144,3,41.91,38.81,12.5,Orange
+178,c,18119,Hispanic or Latino,23,3,Suppressed,0.48,1.52,Suppressed,Owen
+179,c,18119,Not Hispanic or Latino,2431,108,Suppressed,50.83,54.82,Suppressed,Owen
+180,c,18119,Unknown,2329,86,Suppressed,48.69,43.65,Suppressed,Owen
+181,c,18121,Hispanic or Latino,15,5,Suppressed,0.52,2.42,Suppressed,Parke
+182,c,18121,Not Hispanic or Latino,1004,98,Suppressed,34.76,47.34,Suppressed,Parke
+183,c,18121,Unknown,1869,104,Suppressed,64.72,50.24,Suppressed,Parke
+184,c,18123,Hispanic or Latino,13,1,0,0.3,0.36,0.0,Perry
+185,c,18123,Not Hispanic or Latino,1430,100,4,33.37,36.36,28.57,Perry
+186,c,18123,Unknown,2842,174,10,66.32,63.27,71.43,Perry
+187,c,18125,Hispanic or Latino,11,0,0,0.51,0.0,0.0,Pike
+188,c,18125,Not Hispanic or Latino,861,90,0,39.55,29.32,0.0,Pike
+189,c,18125,Unknown,1305,217,10,59.94,70.68,100.0,Pike
+190,c,18127,Hispanic or Latino,1788,261,0,5.23,9.14,0.0,Porter
+191,c,18127,Not Hispanic or Latino,15500,1408,28,45.36,49.32,59.57,Porter
+192,c,18127,Unknown,16885,1186,19,49.41,41.54,40.43,Porter
+193,c,18129,Hispanic or Latino,26,10,Suppressed,0.49,1.54,Suppressed,Posey
+194,c,18129,Not Hispanic or Latino,719,70,Suppressed,13.5,10.75,Suppressed,Posey
+195,c,18129,Unknown,4580,571,Suppressed,86.01,87.71,Suppressed,Posey
+196,c,18131,Hispanic or Latino,33,0,Suppressed,1.41,0.0,Suppressed,Pulaski
+197,c,18131,Not Hispanic or Latino,1559,92,Suppressed,66.45,66.19,Suppressed,Pulaski
+198,c,18131,Unknown,754,47,Suppressed,32.14,33.81,Suppressed,Pulaski
+199,c,18133,Hispanic or Latino,47,9,1,0.63,1.31,6.67,Putnam
+200,c,18133,Not Hispanic or Latino,3657,321,7,49.1,46.79,46.67,Putnam
+201,c,18133,Unknown,3744,356,7,50.27,51.9,46.67,Putnam
+202,c,18135,Hispanic or Latino,68,12,Suppressed,1.44,3.72,Suppressed,Randolph
+203,c,18135,Not Hispanic or Latino,2222,160,Suppressed,47.2,49.54,Suppressed,Randolph
+204,c,18135,Unknown,2418,151,Suppressed,51.36,46.75,Suppressed,Randolph
+205,c,18137,Hispanic or Latino,56,3,Suppressed,0.94,0.73,Suppressed,Ripley
+206,c,18137,Not Hispanic or Latino,3565,292,Suppressed,59.9,71.39,Suppressed,Ripley
+207,c,18137,Unknown,2331,114,Suppressed,39.16,27.87,Suppressed,Ripley
+208,c,18139,Hispanic or Latino,18,0,Suppressed,0.55,0.0,Suppressed,Rush
+209,c,18139,Not Hispanic or Latino,1535,103,Suppressed,47.1,53.65,Suppressed,Rush
+210,c,18139,Unknown,1706,89,Suppressed,52.35,46.35,Suppressed,Rush
+211,c,18141,Hispanic or Latino,2779,545,3,3.11,6.37,1.95,St. Joseph
+212,c,18141,Not Hispanic or Latino,26514,1758,42,29.68,20.54,27.27,St. Joseph
+213,c,18141,Unknown,60045,6257,109,67.21,73.1,70.78,St. Joseph
+214,c,18143,Hispanic or Latino,55,10,0,0.95,2.0,0.0,Scott
+215,c,18143,Not Hispanic or Latino,3022,287,6,52.37,57.4,46.15,Scott
+216,c,18143,Unknown,2694,203,7,46.68,40.6,53.85,Scott
+217,c,18145,Hispanic or Latino,223,79,2,2.59,10.33,6.9,Shelby
+218,c,18145,Not Hispanic or Latino,4588,376,26,53.21,49.15,89.66,Shelby
+219,c,18145,Unknown,3812,310,1,44.21,40.52,3.45,Shelby
+220,c,18147,Hispanic or Latino,70,19,Suppressed,2.06,5.29,Suppressed,Spencer
+221,c,18147,Not Hispanic or Latino,1265,151,Suppressed,37.24,42.06,Suppressed,Spencer
+222,c,18147,Unknown,2062,189,Suppressed,60.7,52.65,Suppressed,Spencer
+223,c,18149,Hispanic or Latino,92,10,Suppressed,2.21,2.69,Suppressed,Starke
+224,c,18149,Not Hispanic or Latino,2488,200,Suppressed,59.64,53.76,Suppressed,Starke
+225,c,18149,Unknown,1592,162,Suppressed,38.16,43.55,Suppressed,Starke
+226,c,18151,Hispanic or Latino,98,27,Suppressed,1.73,4.75,Suppressed,Steuben
+227,c,18151,Not Hispanic or Latino,2337,230,Suppressed,41.19,40.49,Suppressed,Steuben
+228,c,18151,Unknown,3239,311,Suppressed,57.08,54.75,Suppressed,Steuben
+229,c,18153,Hispanic or Latino,13,0,0,0.3,0.0,0.0,Sullivan
+230,c,18153,Not Hispanic or Latino,1714,146,3,39.24,36.14,25.0,Sullivan
+231,c,18153,Unknown,2641,258,9,60.46,63.86,75.0,Sullivan
+232,c,18155,Hispanic or Latino,10,0,Suppressed,0.57,0.0,Suppressed,Switzerland
+233,c,18155,Not Hispanic or Latino,757,37,Suppressed,43.13,44.58,Suppressed,Switzerland
+234,c,18155,Unknown,988,46,Suppressed,56.3,55.42,Suppressed,Switzerland
+235,c,18157,Hispanic or Latino,2791,429,0,4.53,12.51,0.0,Tippecanoe
+236,c,18157,Not Hispanic or Latino,26836,1513,12,43.54,44.14,85.71,Tippecanoe
+237,c,18157,Unknown,32004,1486,2,51.93,43.35,14.29,Tippecanoe
+238,c,18159,Hispanic or Latino,48,4,0,1.72,1.53,0.0,Tipton
+239,c,18159,Not Hispanic or Latino,1989,202,20,71.19,77.39,86.96,Tipton
+240,c,18159,Unknown,757,55,3,27.09,21.07,13.04,Tipton
+241,c,18161,Hispanic or Latino,7,0,Suppressed,0.45,0.0,Suppressed,Union
+242,c,18161,Not Hispanic or Latino,290,33,Suppressed,18.52,34.02,Suppressed,Union
+243,c,18161,Unknown,1269,64,Suppressed,81.03,65.98,Suppressed,Union
+244,c,18163,Hispanic or Latino,223,47,1,0.43,0.88,2.04,Vanderburgh
+245,c,18163,Not Hispanic or Latino,7327,711,12,14.01,13.26,24.49,Vanderburgh
+246,c,18163,Unknown,44736,4605,36,85.56,85.87,73.47,Vanderburgh
+247,c,18165,Hispanic or Latino,10,1,Suppressed,0.32,0.51,Suppressed,Vermillion
+248,c,18165,Not Hispanic or Latino,1186,108,Suppressed,37.53,55.1,Suppressed,Vermillion
+249,c,18165,Unknown,1964,87,Suppressed,62.15,44.39,Suppressed,Vermillion
+250,c,18167,Hispanic or Latino,243,47,0,0.99,1.94,0.0,Vigo
+251,c,18167,Not Hispanic or Latino,8444,1091,15,34.4,45.05,46.88,Vigo
+252,c,18167,Unknown,15857,1284,17,64.61,53.01,53.12,Vigo
+253,c,18169,Hispanic or Latino,93,15,Suppressed,1.66,4.1,Suppressed,Wabash
+254,c,18169,Not Hispanic or Latino,3482,222,Suppressed,62.08,60.66,Suppressed,Wabash
+255,c,18169,Unknown,2034,129,Suppressed,36.26,35.25,Suppressed,Wabash
+256,c,18171,Hispanic or Latino,12,1,Suppressed,1.14,1.39,Suppressed,Warren
+257,c,18171,Not Hispanic or Latino,662,51,Suppressed,62.99,70.83,Suppressed,Warren
+258,c,18171,Unknown,377,20,Suppressed,35.87,27.78,Suppressed,Warren
+259,c,18173,Hispanic or Latino,41,9,2,0.26,0.49,3.23,Warrick
+260,c,18173,Not Hispanic or Latino,2564,236,17,15.97,12.97,27.42,Warrick
+261,c,18173,Unknown,13448,1575,43,83.77,86.54,69.35,Warrick
+262,c,18175,Hispanic or Latino,40,4,Suppressed,0.97,1.17,Suppressed,Washington
+263,c,18175,Not Hispanic or Latino,2075,183,Suppressed,50.17,53.51,Suppressed,Washington
+264,c,18175,Unknown,2021,155,Suppressed,48.86,45.32,Suppressed,Washington
+265,c,18177,Hispanic or Latino,294,45,1,1.79,3.99,4.76,Wayne
+266,c,18177,Not Hispanic or Latino,7694,548,5,46.84,48.62,23.81,Wayne
+267,c,18177,Unknown,8439,534,15,51.37,47.38,71.43,Wayne
+268,c,18179,Hispanic or Latino,98,8,Suppressed,1.96,2.01,Suppressed,Wells
+269,c,18179,Not Hispanic or Latino,3652,299,Suppressed,73.07,75.13,Suppressed,Wells
+270,c,18179,Unknown,1248,91,Suppressed,24.97,22.86,Suppressed,Wells
+271,c,18181,Hispanic or Latino,304,89,0,5.04,16.09,0.0,White
+272,c,18181,Not Hispanic or Latino,3666,268,12,60.8,48.46,80.0,White
+273,c,18181,Unknown,2060,196,3,34.16,35.44,20.0,White
+274,c,18183,Hispanic or Latino,103,11,Suppressed,1.94,2.63,Suppressed,Whitley
+275,c,18183,Not Hispanic or Latino,4114,288,Suppressed,77.67,68.74,Suppressed,Whitley
+276,c,18183,Unknown,1080,120,Suppressed,20.39,28.64,Suppressed,Whitley
+277,d,1,Hispanic or Latino,12470,2305,25,6.96,12.54,5.41,""
+278,d,1,Not Hispanic or Latino,67044,6414,179,37.44,34.89,38.74,""
+279,d,1,Unknown,99560,9667,258,55.6,52.58,55.84,""
+280,d,10,Hispanic or Latino,1473,404,6,1.28,3.17,2.74,""
+281,d,10,Not Hispanic or Latino,26967,3095,69,23.36,24.31,31.51,""
+282,d,10,Unknown,86987,9230,144,75.36,72.51,65.75,""
+283,d,2,Hispanic or Latino,9421,2501,15,5.09,12.2,4.41,""
+284,d,2,Not Hispanic or Latino,59015,5239,107,31.86,25.55,31.47,""
+285,d,2,Unknown,116798,12761,218,63.05,62.25,64.12,""
+286,d,3,Hispanic or Latino,5168,1064,11,3.72,8.0,3.43,""
+287,d,3,Not Hispanic or Latino,84294,7535,197,60.64,56.69,61.37,""
+288,d,3,Unknown,49535,4693,113,35.64,35.31,35.2,""
+289,d,4,Hispanic or Latino,6713,1866,3,6.35,22.53,2.91,""
+290,d,4,Not Hispanic or Latino,48848,3451,56,46.19,41.67,54.37,""
+291,d,4,Unknown,50198,2965,44,47.46,35.8,42.72,""
+292,d,5,Hispanic or Latino,11496,2621,22,2.62,6.54,1.68,""
+293,d,5,Not Hispanic or Latino,173266,14556,708,39.46,36.32,54.09,""
+294,d,5,Unknown,254327,22896,579,57.92,57.14,44.23,""
+295,d,6,Hispanic or Latino,2232,311,5,1.68,2.63,1.34,""
+296,d,6,Not Hispanic or Latino,67289,6273,208,50.78,53.08,55.61,""
+297,d,6,Unknown,62977,5234,161,47.53,44.29,43.05,""
+298,d,7,Hispanic or Latino,420,73,1,0.71,1.45,0.94,""
+299,d,7,Not Hispanic or Latino,24285,2377,58,41.28,47.28,54.72,""
+300,d,7,Unknown,34131,2578,47,58.01,51.27,44.34,""
+301,d,8,Hispanic or Latino,2568,502,2,2.69,7.04,1.19,""
+302,d,8,Not Hispanic or Latino,45996,3350,94,48.22,47.01,55.95,""
+303,d,8,Unknown,46817,3274,72,49.08,45.94,42.86,""
+304,d,9,Hispanic or Latino,1949,374,3,2.04,4.28,1.06,""
+305,d,9,Not Hispanic or Latino,48176,4694,167,50.38,53.69,59.01,""
+306,d,9,Unknown,45507,3674,113,47.59,42.03,39.93,""
