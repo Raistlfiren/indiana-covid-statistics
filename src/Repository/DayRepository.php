@@ -13,6 +13,8 @@ use DateTime;
 
 class DayRepository extends ServiceEntityRepository
 {
+    const TOTAL_NUMBER_OF_COUNTIES = 92;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Day::class);
@@ -28,6 +30,18 @@ class DayRepository extends ServiceEntityRepository
             ->where('c.name = :county')
             ->setParameter('county', $countyName)
             ->orderBy('d.date', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getDataForLatestDay()
+    {
+        $qb = $this->createQueryBuilder('d');
+
+        return $qb
+            ->select('d.id', 'd.date', 'd.covidCount', 'd.covidDeaths', 'd.covidTest')
+            ->orderBy('d.date', 'DESC')
+            ->setMaxResults((self::TOTAL_NUMBER_OF_COUNTIES*2))
             ->getQuery()
             ->getResult();
     }

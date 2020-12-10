@@ -83,7 +83,7 @@ class SparklineCharts extends React.Component {
                 <h3 className="mb-2">{currentData}</h3>
                 {this.chartChangeIndicator(currentData, oldDate)}
                 <p className="d-block">{oldDate} yesterday</p>
-                <p>{total} total</p>
+                <p>{new Intl.NumberFormat().format(total)} total</p>
             </div>
         )
     }

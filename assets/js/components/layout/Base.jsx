@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from "./Navigation";
 import {Route, Switch} from "react-router-dom";
 import Dashboard from "../county/Dashboard";
+import Home from "../home/Home";
 import dayjs from 'dayjs';
 
 class Base extends React.Component {
@@ -15,6 +16,7 @@ class Base extends React.Component {
                     <div className="page-content">
                         <Switch>
                             <Route path="/county/:county" component={Dashboard} />
+                            <Route path="/" component={Home} />
                         </Switch>
                     </div>
                     <footer className="footer">

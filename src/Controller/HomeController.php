@@ -15,6 +15,7 @@ use App\Repository\SexRepository;
 use App\Repository\StatisticsRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Serializer;
@@ -205,10 +206,54 @@ class HomeController extends AbstractController
     }
 
     /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     *
+     * @Route("/api/indiana", name="indiana")
+     */
+    public function indianaAction(Request $request, DayRepository $dayRepository, SerializerInterface $serializer)
+    {
+        $json = file_get_contents(__DIR__ . '/../../Resources/tl_2010_18_county10.json');
+        $data = json_decode($json);
+        $countyDays = $dayRepository->getDataForLatestDay();
+        $json = $serializer->serialize($countyDays, 'json', array_merge([
+            'json_encode_options' => JsonResponse::DEFAULT_ENCODING_OPTIONS,
+        ], ['groups' => ['display']]));
+        $data->extra = json_decode($json);
+        $data = json_encode($data);
+
+        return new JsonResponse($data, 200, [], true);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     *
+     * @Route("/api/indiana/days", name="indiana_days")
+     */
+    public function indianaCountyData(DayRepository $dayRepository)
+    {
+        $countyDays = $dayRepository->getDataForLatestDay();
+
+        return $this->json($countyDays, 200, [], [
+            'groups' => ['display']
+        ]);
+    }
+
+    /**
      * @Route("/{reactRouting}/{test}", defaults={"reactRouting": null})
      * @Template()
      */
     public function indexAction()
+    {
+
+    }
+
+    /**
+     * @Route("/{reactRouting}", defaults={"reactRouting": null})
+     * @Template("home/index.html.twig")
+     */
+    public function testAction()
     {
 
     }

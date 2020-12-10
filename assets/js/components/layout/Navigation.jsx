@@ -18,7 +18,7 @@ class Navigation extends React.Component {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/county">
+                                <a className="nav-link" href="/summary">
                                     <Eye className="link-icon" />&nbsp;
                                     <span className="menu-title">Overview</span>
                                 </a>
